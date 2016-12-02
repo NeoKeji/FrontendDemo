@@ -1,0 +1,52 @@
+ *{
+    margin:0;
+    padding:0;
+  }
+  html{
+    font-size: 62.5%;
+  }
+  html {font-size:100px;}
+  body {font-size:0.15rem}
+  html,body{
+    height:100%;
+  }
+  body{
+    font-family:"microsoft yahei";
+    
+  }
+  img{width:100%;display:block;}
+  .navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background-color:rgb(204,204,204);
+    padding-left:200px;
+    min-width:600px;
+  }
+  
+  .nav-item-wrap{
+    
+  }
+  .navbar a{
+    width:23px;
+    display:inline-block;
+    margin:6px 20px;
+  }
+  .navbar a:first-child{
+    padding-right:20px;
+    border-right:1px solid #333;
+  }
+  
+
+.ctrlPanel{
+  position:absolute;
+  top:90px;
+  right:22px;
+  border-radius:10px;
+  padding:20px;
+  width:300px;
+  height:400px;
+  background-color:rgb(215,215,215)
+  
+}
