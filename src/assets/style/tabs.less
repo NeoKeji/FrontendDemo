@@ -1,12 +1,13 @@
 
+@bgcolor : #fff;
 @color-dark: #337ab7;
 @tab-text-color:@color-dark;
-@tab-bg:#fff;
+@tab-bg:@bgcolor;
 @tab-active-text-color:#555;
-@tab-active-bg:#fff;
+@tab-active-bg:@bgcolor;
 @sub-tab-text-color:@color-dark;
-@sub-tab-bg:#fff;
-@sub-tab-active-text-color:#fff;
+@sub-tab-bg:@bgcolor;
+@sub-tab-active-text-color:@bgcolor;
 @sub-tab-active-bg:@color-dark;
 
 @border-color:rgb(221,221,221);
@@ -69,10 +70,30 @@
     
     .tabs-content-panel{
         overflow:auto;
-        height:320px;
+        height:425px;
         .view-item{
             width:32%;
             display:inline-block;
         }
+        
+        .detail{
+            position:absolute;
+            bottom:0;
+            left:0;
+            z-index:20;
+            display:flex;
+            background-color:@bgcolor;
+            max-height: 445px;
+            padding:20px;
+            border-radius:20px;
+            .detail-image{
+                flex:1;
+            }
+            .detail-msg{
+                flex:1;
+            }
+        }
     }
+    
+    
 }

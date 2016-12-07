@@ -78,7 +78,9 @@ class TabsContentPanel extends React.Component  {
     super(props);
     this.state = {
       content:'',
-      datas:[]
+      datas:[],
+      isShowDeail:false,
+      detailItem:{}
     }
   }
   
@@ -97,6 +99,7 @@ class TabsContentPanel extends React.Component  {
     this.setState({
       datas
     });
+    this.closeDetail();
     
   }
   
@@ -106,23 +109,64 @@ class TabsContentPanel extends React.Component  {
     this.setState({
       datas
     });
+    this.closeDetail();
+  }
+  
+  itemClicked(item){
+    console.log(item.code);
+    this.setState({
+      isShowDeail : true,
+      detailItem : item
+    });
+    this.forceUpdate();
+  }
+  
+  closeDetail(){
+    this.setState({
+      isShowDeail : false,
+      detailItem : {}
+    });
+    this.forceUpdate();
   }
   
   render() {
     return (
       <div className='tabs-content-panel'>
-        {
-          this.state.datas.map((item,i)=>{
-            let subs = item.subTabs;
-            if(subs){
-              subs.map((sub, i)=>{
-                return <img src={sub.img} key={sub.code} className='view-item'/>
-              })
-            }else{
-              return <img src={item.img} key={item.code} className='view-item'/>
-            }
-          })
-        }
+        <div className='content-items' style={{display: !this.state.isShowDeail?'block':'none'}}>
+          {
+            this.state.datas.map((item,i)=>{
+              let subs = item.subTabs;
+              if(subs){
+                subs.map((sub, i)=>{
+                  return <img src={sub.img} key={sub.code} className='view-item' onClick={()=>{this.itemClicked(sub)}}/>
+                })
+              }else{
+                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item)}}/>
+              }
+            })
+          }
+        </div>
+        <div className='detail' style={{display: this.state.isShowDeail?'flex':'none'}}>
+          <div className='detail-image'>
+            <img src={this.state.detailItem?this.state.detailItem.img:''}/>
+            <div>$219</div>
+          </div>
+          <div className='detail-msg'>
+            <section>
+              <h4>Product code : </h4>
+              <span>{this.state.detailItem.code}</span>
+            </section>
+            <section>
+              <h4>Product Description</h4>
+              <div>{this.state.detailItem.desc}</div>
+            </section>
+            <section>
+              <h4>Care Instructions</h4>
+              <div>{this.state.detailItem.care}</div>
+            </section>
+            <button onClick={()=>{this.closeDetail()}}>返回</button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import Model3D from '../components/Model3D.jsx';
 import Panel from '../components/Panel.jsx';
 import Tabs from '../components/Tabs.jsx';
 
-// 
+// <Model3D/>
 
 class App extends React.Component {
   constructor(props){
@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav/>
-         <Model3D/>
+        <Model3D/>
         <Panel content={Tabs}/>
       </div>
     );

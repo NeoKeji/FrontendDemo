@@ -15,28 +15,6 @@
     
   }
   img{width:100%;display:block;}
-  .navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    background-color:rgb(204,204,204);
-    padding-left:200px;
-    min-width:600px;
-  }
-  
-  .nav-item-wrap{
-    
-  }
-  .navbar a{
-    width:23px;
-    display:inline-block;
-    margin:6px 20px;
-  }
-  .navbar a:first-child{
-    padding-right:20px;
-    border-right:1px solid #333;
-  }
   
 
 .ctrlPanel{
@@ -46,7 +24,7 @@
   border-radius:10px;
   padding:20px;
   width:400px;
-  height:400px;
+  height:520px;
   /*background-color:rgb(215,215,215)*/
   background-color:#fff;
   

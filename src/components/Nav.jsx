@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/style/nav.less';
 
 
 class Nav extends React.Component {
