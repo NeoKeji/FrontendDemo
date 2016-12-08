@@ -131,7 +131,7 @@ class TabsContentPanel extends React.Component  {
   
   render() {
     return (
-      <div className='tabs-content-panel'>
+      <div >
         <div className='content-items' style={{display: !this.state.isShowDeail?'block':'none'}}>
           {
             this.state.datas.map((item,i)=>{

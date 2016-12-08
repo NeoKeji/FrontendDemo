@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/style/tabs.less';
-import TabsContentPanel from './TabsContentPanel.jsx';
 
 
 class Tabs extends React.Component {
@@ -10,11 +9,21 @@ class Tabs extends React.Component {
     this.state = {
       currentItem:null,
       currentSubItem:null,
-      subItems:[]
+      subItems:[],
+      propOptions:{}
+      
     }
   }
   
-  _tabFocus(item){
+  tabFocus(index){
+    let tabItem = this.state.propOptions.tabItems;
+    let item = tabItem[index];
+    if(item){
+      this._tabFocus(item, index)
+    }
+  }
+  
+  _tabFocus(item, index){
     if(!item.active){
       item.active= true;
       let lastItem = this.state.currentItem;
@@ -29,13 +38,13 @@ class Tabs extends React.Component {
           subItems : item.subTabs
         });
         setTimeout(()=>{
-        this._subTabFocus(item.subTabs[0]);
+          this._subTabFocus(item.subTabs[0]);
         },0)
       }else{
         this.setState({
           subItems : []
         })
-        this.refs.tabsContentPanel.tabChanged(item);
+        this.refs.tabsContentPanel.tabChanged(item, index);
         this.forceUpdate();
         
       }
@@ -44,26 +53,39 @@ class Tabs extends React.Component {
   }
   
   _subTabFocus(item){
-    if(item && !item.active){
-      item.active= true;
+    //if(item && !item.active){
       let lastItem = this.state.currentSubItem;
       if(lastItem){
         lastItem.active = false;
       }
+      item.active= true;
       this.setState({
         currentSubItem : item
       });
       this.refs.tabsContentPanel.subTabChanged(this.state.currentItem, item);
       this.forceUpdate();
-    }
+    //}
     
   }
   
+  componentWillMount(){
+    //深拷贝props 避免多组件见的props指针问题
+    //let propOptions = Object.assign({},this.props);
+    let propOptions = this.props;
+    if(this.props === Tabs.defaultProps){ 
+      propOptions = JSON.parse(JSON.stringify(this.props));
+    }
+    this.setState({
+      propOptions
+    });
+  }
   
   componentDidMount (){
-    this.props.tabItems.map((item,i)=>{
-      if(i===this.props.defaultActive){
-        this._tabFocus(item);
+    
+    this.state.propOptions.tabItems.map((item,i)=>{
+      delete item.active;
+      if(i===this.state.propOptions.defaultActive){
+        this._tabFocus(item, i);
       }
     });
   }
@@ -74,11 +96,11 @@ class Tabs extends React.Component {
         <div className='tab-item-group'>
           <ul>
             {
-              this.props.tabItems.map((item,i)=>{
+              this.state.propOptions.tabItems.map((item,i)=>{
                 let itemClass = item.active?'active':'';
                 return <li  className={itemClass} 
                             key={item.val} 
-                            onClick={()=>{this._tabFocus(item)}}>{item.text}</li>
+                            onClick={()=>{this._tabFocus(item, i)}}>{item.text}</li>
               })
             }
           </ul>
@@ -95,7 +117,10 @@ class Tabs extends React.Component {
             }
           </ul>
         </div>
-        <TabsContentPanel  ref='tabsContentPanel' />
+        <div className='tabs-content-panel'>
+            <this.props.tabsContentPanel ref='tabsContentPanel' tabFocus={(index)=>{this.tabFocus(index)}}/>
+        </div>
+        
       </div>
     );
   }

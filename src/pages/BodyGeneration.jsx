@@ -6,23 +6,20 @@ import Tabs from '../components/Tabs.jsx';
 
 // <Model3D/>
 
-class App extends React.Component {
+class BodyGeneration extends React.Component {
   constructor(props){
     super(props);
     
   }
   render() {
     return (
-      <div className='main-wrap'>
-        <header className='main-header'>
-          <Nav/>
-        </header>
-        <div className='main-content'>
-          {this.props.children}
-        </div>
+      <div>
+        <Panel content={
+          'hahahahahahaha 我是身体生成页面的panel'
+        }/>
       </div>
     );
   }
 }
 
-export default App;
+export default BodyGeneration;

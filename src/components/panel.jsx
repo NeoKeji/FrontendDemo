@@ -7,7 +7,7 @@ class Panel extends React.Component {
   render() {
     return (
       <div className='ctrlPanel'>
-        <this.props.content/>
+        {this.props.content}
       </div>
     );
   }
