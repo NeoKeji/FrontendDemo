@@ -12,7 +12,7 @@
   }
   body{
     font-family:"microsoft yahei";
-    
+
   }
   img{width:100%;display:block;}
   .navbar{
@@ -24,9 +24,9 @@
     padding-left:200px;
     min-width:600px;
   }
-  
+
   .nav-item-wrap{
-    
+
   }
   .navbar a{
     width:23px;
@@ -37,7 +37,7 @@
     padding-right:20px;
     border-right:1px solid #333;
   }
-  
+
 
 .ctrlPanel{
   position:absolute;
@@ -48,6 +48,6 @@
   width:400px;
   height:400px;
   /*background-color:rgb(215,215,215)*/
-  background-color:#fff;
-  
+  background-color:#ccc;
+
 }
