@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav.jsx';
 import Model3D from '../components/Model3D.jsx';
 import Panel from '../components/Panel.jsx';
-import Tabs from '../components/Tabs.jsx';
+import BodyGenerationPanel from '../components/BodyGenerationPanel.jsx';
 
 // <Model3D/>
 
@@ -15,7 +15,7 @@ class BodyGeneration extends React.Component {
     return (
       <div>
         <Panel content={
-          'hahahahahahaha 我是身体生成页面的panel'
+          <BodyGenerationPanel/>
         }/>
       </div>
     );

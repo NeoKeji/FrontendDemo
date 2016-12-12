@@ -28,6 +28,7 @@ class FaceReconstruction extends React.Component {
   render() {
     return (
       <div>
+        <img src='../src/assets/images/facereconstructionpage/3d_view_u348.PNG' style={{width:'32%',marginTop:'8%',marginLeft:'10%'}}/>
         面部重构页面
         <Panel content={
           <Tabs tabsContentPanel={FaceReconstructionPanel} tabItems={mockData.tabItems}/>
