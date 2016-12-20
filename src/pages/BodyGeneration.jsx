@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav.jsx';
-import Model3D from '../components/Model3D.jsx';
+import View3D from '../components/View3D.jsx';
 import Panel from '../components/Panel.jsx';
 import BodyGenerationPanel from '../components/BodyGenerationPanel.jsx';
 
@@ -9,7 +9,7 @@ import BodyGenerationPanel from '../components/BodyGenerationPanel.jsx';
 class BodyGeneration extends React.Component {
   constructor(props){
     super(props);
-    
+
   }
   render() {
     return (
