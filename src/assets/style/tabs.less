@@ -1,5 +1,7 @@
 
 @bgcolor : #fff;
+@font-dark : #000;
+@dark-gray : #A9A9A9;
 @color-hover : #F7F7F7;
 //@color-dark: #337ab7;
 @color-dark: #A890E5;
@@ -36,17 +38,17 @@
         ul{
             position:relative;
             border-bottom:1px solid @border-color;
-            
+
             li{
                 position:relative;
                 top:1px;
-                color: @color-dark;
+                color: @font-dark;
                 border:1px;
                 .float-list-item;
             }
             li.active{
                 background-color:@tab-active-bg;
-                border:1px solid @border-color;
+                border:1px solid @dark-gray;
                 border-radius:3px 3px 0 0;
                 border-bottom:0px;
                 color:@tab-active-text-color;
@@ -55,24 +57,26 @@
                 background-color:@tab-active-bg;
             }
             li:hover{
+                border:1px solid @border-color;
                 background-color:@color-hover;
                 border-radius:3px 3px 0 0;
             }
         }
     }
-    
+
     .sub-tab-item-group{
         ul{
             position:relative;
-            
+
             li{
                 background-color:@sub-tab-bg;
-                color: @color-dark;
+                color: @font-dark;
                 border-radius:3px ;
                 .float-list-item;
             }
             li.active{
                 background-color:@sub-tab-active-bg;
+                border:1px solid @dark-gray;
                 color:@sub-tab-active-text-color;
                 border-radius:3px;
             }
@@ -81,11 +85,12 @@
             }
             li:hover{
                 background-color:@color-hover;
+                border:1px solid @border-color;
                 border-radius:3px 3px 0 0;
             }
         }
     }
-    
+
     .tabs-content-panel{
         overflow:auto;
         height:425px;
@@ -95,7 +100,7 @@
             width:32%;
             display:inline-block;
         }
-        
+
         .detail{
             position:absolute;
             bottom:0;
@@ -114,11 +119,11 @@
             }
         }
     }
-    
-    
+
+
     button{
         width:112px;
         margin:0 10px;
-        color:#A890E5;
+        color:@font-dark;
     }
 }
