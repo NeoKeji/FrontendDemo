@@ -1,16 +1,20 @@
 
 @bgcolor : #fff;
-@color-dark: #337ab7;
+@color-hover : #F7F7F7;
+//@color-dark: #337ab7;
+@color-dark: #A890E5;
 @tab-text-color:@color-dark;
 @tab-bg:@bgcolor;
-@tab-active-text-color:#555;
-@tab-active-bg:@bgcolor;
+@tab-active-text-color:#fff;
+@tab-active-bg:@color-dark;
 @sub-tab-text-color:@color-dark;
 @sub-tab-bg:@bgcolor;
 @sub-tab-active-text-color:@bgcolor;
 @sub-tab-active-bg:@color-dark;
 
-@border-color:rgb(221,221,221);
+//@border-color:rgb(221,221,221);
+@border-color:#E6E6E6;
+
 
 
 .full{
@@ -47,6 +51,13 @@
                 border-bottom:0px;
                 color:@tab-active-text-color;
             }
+            li.active:hover{
+                background-color:@tab-active-bg;
+            }
+            li:hover{
+                background-color:@color-hover;
+                border-radius:3px 3px 0 0;
+            }
         }
     }
     
@@ -65,12 +76,21 @@
                 color:@sub-tab-active-text-color;
                 border-radius:3px;
             }
+            li.active:hover{
+                background-color:@tab-active-bg;
+            }
+            li:hover{
+                background-color:@color-hover;
+                border-radius:3px 3px 0 0;
+            }
         }
     }
     
     .tabs-content-panel{
         overflow:auto;
         height:425px;
+        border-top:none;
+        border-radius:0 0 5px 5px;
         .view-item{
             width:32%;
             display:inline-block;
@@ -96,4 +116,9 @@
     }
     
     
+    button{
+        width:112px;
+        margin:0 10px;
+        color:#A890E5;
+    }
 }

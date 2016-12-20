@@ -1,5 +1,11 @@
 
-
+@border-color:#E6E6E6;
+.faceCtrlPanel{
+    .tabs-content-panel{
+        height:470px;
+        border:1px solid @border-color;
+    }
+}
 .face-content-box{
     display:flex;
     height:300px;
@@ -10,6 +16,7 @@
         -moz-background-size:100% 100%; 
         background: no-repeat no;
         input{
+            cursor:pointer;
             opacity:0;
             width: 100%;
             height:300px;
@@ -19,4 +26,6 @@
     .face-content-sample{
         flex:1;
     }
+    
 }
+

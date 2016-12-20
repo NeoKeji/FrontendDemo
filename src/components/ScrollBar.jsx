@@ -7,6 +7,7 @@ class ScrollBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      name:'',
       hasMouseDown:false,
       step:5,
       value:0,
@@ -22,9 +23,13 @@ class ScrollBar extends React.Component {
     });
   }
   btnBlur(e){
-    this.setState({
-      hasMouseDown:false
-    });
+    if(this.state.hasMouseDown){
+      this.setState({
+        hasMouseDown:false
+      });
+      let eventHandle =  this.props.onScrollTo;
+      eventHandle && eventHandle.call(this,this.state.value,this.state.name);
+    }
   }
   btnMove(e){
     //console.log(this.state.hasMouseDown);
@@ -66,6 +71,14 @@ class ScrollBar extends React.Component {
     
     this.unitWidth = this.refs.scrollBar.clientWidth/(this.state.max/this.state.step);
     console.log('unit: '+this.unitWidth);
+    
+    let props = Object.assign({},this.props)
+    console.log(props)
+    this.setState({
+      min : this.props.min,
+      max : this.props.max,
+      step : this.props.step,
+    })
   }
   
   render() {

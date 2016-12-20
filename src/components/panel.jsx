@@ -6,7 +6,7 @@ class Panel extends React.Component {
   
   render() {
     return (
-      <div className='ctrlPanel'>
+      <div className={'ctrlPanel '+this.props.clazz}>
         {this.props.content}
       </div>
     );
@@ -14,6 +14,7 @@ class Panel extends React.Component {
 }
 
 Panel.defaultProps  = {
+  clazz:'',
   content : <div>我是控制面板</div>,
 };
 

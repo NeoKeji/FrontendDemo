@@ -107,7 +107,7 @@ class FaceReconstructionPanel extends React.Component  {
             <button disabled>上一步</button>
             <button onClick={()=>{this.showContentPanel(1)}}>下一步</button>
           </div>
-          正脸
+          
         </div>
         <div className='face-content-left' style={{display: this.state.displayIndex===1?'block':'none'}}>
           <div className='face-content-box'>
@@ -124,7 +124,7 @@ class FaceReconstructionPanel extends React.Component  {
             <button  onClick={()=>{this.showContentPanel(0)}}>上一步</button>
             <button onClick={()=>{this.showContentPanel(2)}}>下一步</button>
           </div>
-          左脸
+          
         </div>
         <div className='face-content-right' style={{display: this.state.displayIndex===2?'block':'none'}}>
           <div className='face-content-box'>
@@ -140,9 +140,9 @@ class FaceReconstructionPanel extends React.Component  {
           <div className='face-content-button-group'>
             <button onClick={()=>{this.resetImg('right')}}>重置</button>
             <button onClick={()=>{this.showContentPanel(1)}}>上一步</button>
-            <button onClick={()=>{this.finish()}} disabled={this.state.previewImages.front===''||this.state.previewImages.left===''||this.state.previewImages.right===''}>完成</button>
+            <button onClick={()=>{this.finish()}} disabled={this.state.previewImages.front===''}>完成</button>
           </div>
-          右脸
+          
         </div>
       </div>
     );

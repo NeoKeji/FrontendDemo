@@ -47,7 +47,7 @@ class BodyGenerationPanel extends React.Component  {
   render() {
     return (
       <div >
-        <ScrollBar/>
+        <ScrollBar min={0} max={400} step={11}/>
       </div>
     );
   }

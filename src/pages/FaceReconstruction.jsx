@@ -32,7 +32,7 @@ class FaceReconstruction extends React.Component {
         面部重构页面
         <Panel content={
           <Tabs tabsContentPanel={FaceReconstructionPanel} tabItems={mockData.tabItems}/>
-        }/>
+        } clazz='faceCtrlPanel'/>
       </div>
     );
   }
