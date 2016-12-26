@@ -1,0 +1,30 @@
+
+@border-color:#A9A9A9;
+.faceCtrlPanel{
+    .tabs-content-panel{
+        height:470px;
+        border:1px solid @border-color;
+    }
+}
+.face-content-box{
+    display:flex;
+    height:300px;
+    padding-top:30px;
+    .face-content-preview{
+        flex:1;
+        background-size:100% 100%;
+        -moz-background-size:100% 100%;
+        background: no-repeat no;
+        input{
+            cursor:pointer;
+            opacity:0;
+            width: 100%;
+            height:300px;
+            display:block;
+        }
+    }
+    .face-content-sample{
+        flex:1;
+    }
+
+}

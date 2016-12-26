@@ -1,3 +1,5 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var config = {
    entry: {
 	main:'./src/js/main.js'
@@ -7,6 +9,12 @@ var config = {
       path:'./',
       filename: '[name].js',
    },
+   plugins: [new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: '/index.html',
+	  template: 'src/views/index.html',
+	  inject: true
+    })],
 	
    devServer: {
       inline: true,
@@ -22,6 +30,9 @@ var config = {
          query: {
             presets: ['es2015', 'react']
          }
+      },{
+          test: /\.less$/,
+          loader: "style!css!less"
       }]
    }
 	

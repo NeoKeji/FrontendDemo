@@ -1,0 +1,17 @@
+# MakeHuman exported MTL
+# www.makehuman.org
+
+
+newmtl young_african_male
+Kd 0.5 0.5 0.5
+Ks 0.02745 0.02745 0.02745
+d 0
+map_Kd young_darkskinned_male_diffuse.png
+map_D young_darkskinned_male_diffuse.png
+
+newmtl Eye_brown
+Kd 1 1 1
+Ks 1 1 1
+d 0
+map_Kd brown_eye.png
+map_D brown_eye.png

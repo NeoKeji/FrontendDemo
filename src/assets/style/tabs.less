@@ -1,0 +1,129 @@
+
+@bgcolor : #fff;
+@font-dark : #000;
+@dark-gray : #A9A9A9;
+@color-hover : #F7F7F7;
+//@color-dark: #337ab7;
+@color-dark: #A890E5;
+@tab-text-color:@color-dark;
+@tab-bg:@bgcolor;
+@tab-active-text-color:#fff;
+@tab-active-bg:@color-dark;
+@sub-tab-text-color:@color-dark;
+@sub-tab-bg:@bgcolor;
+@sub-tab-active-text-color:@bgcolor;
+@sub-tab-active-bg:@color-dark;
+
+//@border-color:rgb(221,221,221);
+@border-color:#E6E6E6;
+
+
+
+.full{
+    width:100%;
+    height:100%;
+}
+
+.float-list-item(){
+    cursor:pointer;
+    list-style:none;
+    display:inline-block;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.tab-wrap{
+    .full;
+    .tab-item-group{
+        ul{
+            position:relative;
+            border-bottom:1px solid @border-color;
+
+            li{
+                position:relative;
+                top:1px;
+                color: @font-dark;
+                border:1px;
+                .float-list-item;
+            }
+            li.active{
+                background-color:@tab-active-bg;
+                border:1px solid @dark-gray;
+                border-radius:3px 3px 0 0;
+                border-bottom:0px;
+                color:@tab-active-text-color;
+            }
+            li.active:hover{
+                background-color:@tab-active-bg;
+            }
+            li:hover{
+                border:1px solid @border-color;
+                background-color:@color-hover;
+                border-radius:3px 3px 0 0;
+            }
+        }
+    }
+
+    .sub-tab-item-group{
+        ul{
+            position:relative;
+
+            li{
+                background-color:@sub-tab-bg;
+                color: @font-dark;
+                border-radius:3px ;
+                .float-list-item;
+            }
+            li.active{
+                background-color:@sub-tab-active-bg;
+                border:1px solid @dark-gray;
+                color:@sub-tab-active-text-color;
+                border-radius:3px;
+            }
+            li.active:hover{
+                background-color:@tab-active-bg;
+            }
+            li:hover{
+                background-color:@color-hover;
+                border:1px solid @border-color;
+                border-radius:3px 3px 0 0;
+            }
+        }
+    }
+
+    .tabs-content-panel{
+        overflow:auto;
+        height:425px;
+        border-top:none;
+        border-radius:0 0 5px 5px;
+        .view-item{
+            width:32%;
+            display:inline-block;
+        }
+
+        .detail{
+            position:absolute;
+            bottom:0;
+            left:0;
+            z-index:20;
+            display:flex;
+            background-color:@bgcolor;
+            max-height: 445px;
+            padding:20px;
+            border-radius:20px;
+            .detail-image{
+                flex:1;
+            }
+            .detail-msg{
+                flex:1;
+            }
+        }
+    }
+
+
+    button{
+        width:112px;
+        margin:0 10px;
+        color:@font-dark;
+    }
+}
