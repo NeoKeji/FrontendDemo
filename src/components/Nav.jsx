@@ -9,9 +9,9 @@ class Nav extends React.Component {
         <nav className='navbar'>
           <div className='nav-item-wrap'>
             <Link to='/'><img src='../src/assets/images/logo_u23.png'/></Link>
-            <a href='javascript:;' className=''><img src='../src/assets/images/neoshop_u25.png'/></a>
-            <a href='javascript:;' className=''><img src='../src/assets/images/neomovie_u27.png'/></a>
-            <a href='javascript:;' className=''><img src='../src/assets/images/neoworld_u29.png'/></a>
+            <a href='javascript:;' className='navIcon '><i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a href='javascript:;' className='navIcon '><i className="fa fa-video-camera" aria-hidden="true"></i></a>
+            <a href='javascript:;' className='navIcon '><i className="fa fa-globe" aria-hidden="true"></i></a>
           </div>
           <div className='nav-main-item-wrap'>
             <Link to='/face'>Register</Link>

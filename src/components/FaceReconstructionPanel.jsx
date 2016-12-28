@@ -16,7 +16,7 @@ class FaceReconstructionPanel extends React.Component  {
       }
     }
   }
-  
+
   buildItem(datas){
     /*datas.map((item, i)=>{
       let subs = item.subTabs || [];
@@ -26,7 +26,7 @@ class FaceReconstructionPanel extends React.Component  {
     });
     this.forceUpdate();
   }
-  
+
   tabChanged(tabItem, index){
     /*let datas = mockData[tabItem.val] || [];
     this.setState({
@@ -35,7 +35,7 @@ class FaceReconstructionPanel extends React.Component  {
     this.state.displayIndex = index;
     this.forceUpdate();
   }
-  
+
   subTabChanged(tabItem, subTabItem){
     /*let datas = mockData[tabItem.val];
     datas = datas?(datas[subTabItem.val] || []) :[];
@@ -43,13 +43,13 @@ class FaceReconstructionPanel extends React.Component  {
       datas
     });*/
   }
-  
+
   showContentPanel(index){
     this.props.tabFocus(index);
     //this.state.displayIndex = index;
     //this.forceUpdate();
   }
-  
+
   onLoadImg(index){
     let file = this.refs[index];
     let src = this.getFileUrl(file);
@@ -70,31 +70,31 @@ class FaceReconstructionPanel extends React.Component  {
   finish(){
     this.context.router.push('/body')
   }
-  
-  /** 
-   * 从 file 域获取 本地图片 url 
-   */ 
-  getFileUrl(source) { 
-    var url; 
-    if (navigator.userAgent.indexOf("MSIE")>=1) { // IE 
-      url = source.value; 
-    } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox 
-      url = window.URL.createObjectURL(source.files.item(0)); 
-    } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome 
-      url = window.URL.createObjectURL(source.files.item(0)); 
-    } 
-    return url; 
-  } 
-  
 
-  
-  
+  /**
+   * 从 file 域获取 本地图片 url
+   */
+  getFileUrl(source) {
+    var url;
+    if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
+      url = source.value;
+    } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
+      url = window.URL.createObjectURL(source.files.item(0));
+    } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
+      url = window.URL.createObjectURL(source.files.item(0));
+    }
+    return url;
+  }
+
+
+
+
   render() {
     return (
       <div >
         <div className='face-content-front' style={{display: this.state.displayIndex===0?'block':'none'}}>
           <div className='face-content-box'>
-            <div className='face-content-preview' 
+            <div className='face-content-preview'
                   style={{backgroundImage:'url('+(this.state.previewImages.front||this.state.previewImages.default)+')'}}>
               <input type='file' onChange={()=>{this.onLoadImg('front')}} ref='front' />
             </div>
@@ -107,11 +107,11 @@ class FaceReconstructionPanel extends React.Component  {
             <button disabled>上一步</button>
             <button onClick={()=>{this.showContentPanel(1)}}>下一步</button>
           </div>
-          
+
         </div>
         <div className='face-content-left' style={{display: this.state.displayIndex===1?'block':'none'}}>
           <div className='face-content-box'>
-            <div className='face-content-preview' 
+            <div className='face-content-preview'
                   style={{backgroundImage:'url('+(this.state.previewImages.left||this.state.previewImages.default)+')'}}>
               <input type='file' onChange={()=>{this.onLoadImg('left')}} ref='left' />
             </div>
@@ -124,14 +124,14 @@ class FaceReconstructionPanel extends React.Component  {
             <button  onClick={()=>{this.showContentPanel(0)}}>上一步</button>
             <button onClick={()=>{this.showContentPanel(2)}}>下一步</button>
           </div>
-          
+
         </div>
         <div className='face-content-right' style={{display: this.state.displayIndex===2?'block':'none'}}>
           <div className='face-content-box'>
-            <div className='face-content-preview' 
+            <div className='face-content-preview'
                   style={{backgroundImage:'url('+(this.state.previewImages.right||this.state.previewImages.default)+')'}}>
               <input type='file' onChange={()=>{this.onLoadImg('right')}} ref='right' />
-              
+
             </div>
             <div className='face-content-sample'>
               <img src='../src/assets/images/mainpage/guideimage_u202.PNG'/>
@@ -142,7 +142,7 @@ class FaceReconstructionPanel extends React.Component  {
             <button onClick={()=>{this.showContentPanel(1)}}>上一步</button>
             <button onClick={()=>{this.finish()}} disabled={this.state.previewImages.front===''}>完成</button>
           </div>
-          
+
         </div>
       </div>
     );

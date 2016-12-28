@@ -6,17 +6,17 @@
     font-size: 62.5%;
   }
   html {font-size:100px;}
-  body {font-size:0.15rem}
+  body {font-size:0.15rem;}
   html,body{
     /*height:100%;*/
   }
   body{
     font-family:"microsoft yahei";
     --background-color: black;
-
+    background-color: #F7F7F7;
   }
   img{width:100%;display:block;}
-  
+
 ::-moz-selection{background:#fff;}::selection {background:#fff;}code::-moz-selection {background:#fff;}code::selection {background:#fff;}
 
 .ctrlPanel{

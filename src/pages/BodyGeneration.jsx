@@ -14,6 +14,7 @@ class BodyGeneration extends React.Component {
   render() {
     return (
       <div>
+        <img src='../src/assets/images/bodygenerationpage/u649.png' style={{width:'20%',marginTop:'8%',marginLeft:'20%'}}/>
         <Panel content={
           <BodyGenerationPanel/>
         } clazz='bodyGenerationPanel'/>

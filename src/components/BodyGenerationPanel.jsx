@@ -6,19 +6,19 @@ let basicDatas = [
   {
     type : 'Basic',
     options: [
-      { 
+      {
         name:'Gender',
         min:0,max:1,step:1
       },
-      { 
+      {
         name:'Age',
         min:0,max:100,step:1
       },
-      { 
+      {
         name:'Height',
         min:0,max:100,step:1
       },
-      { 
+      {
         name:'Weight',
         min:0,max:100,step:1
       }
@@ -29,48 +29,48 @@ let basicDatas = [
 let menDatas = [{
   type : 'Tops',
   options : [
-    { 
+    {
       name:'NeckCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ChestCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'WaistCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'HipCircumference',
       min:0,max:100,step:1
     },
     { name:'SeatCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'UpperArmCircumference',
       min:0,max:100,step:1
     },
     { name:'WristCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ShoulderWidth',
       min:0,max:100,step:1
     },
     { name:'ArmLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ShirtLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'JacketLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'SuitLength',
       min:0,max:100,step:1
     }
@@ -78,31 +78,31 @@ let menDatas = [{
 },{
   type : 'Bottom',
   options : [
-    { 
+    {
       name:'Hip Measurement',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Seat Measurement',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Thigh Circumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Calf Circumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Inseam',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Outseam',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Rise',
       min:0,max:100,step:1
     }
@@ -112,63 +112,63 @@ let menDatas = [{
 let womenDatas =  [{
   type : 'Tops',
   options : [
-    { 
+    {
       name:'NeckCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'WaistCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'HipCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'SeatCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'UpperArmCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'WristCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ShoulderWidth',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ArmLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ShirtLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'JacketLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'SuitLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'BreastPoint(肩膀到胸部最高点)',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'WaistPoint（肩膀到肋骨下沿）',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'BandSize(UnderBustCircumference)',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'CupSize(BustCircumference)',
       min:0,max:100,step:1
     }
@@ -176,43 +176,43 @@ let womenDatas =  [{
 },{
   type : 'Bottom',
   options : [
-    { 
+    {
       name:'HipMeasurement',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'SeatMeasurement',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'ThighCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'CalfCircumference',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Inseam',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Outseam',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'Rise',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'SkirtLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'DressLength',
       min:0,max:100,step:1
     },
-    { 
+    {
       name:'BackLength',
       min:0,max:100,step:1
     }
@@ -239,16 +239,16 @@ class BodyGenerationPanel extends React.Component  {
       basicDatas,menDatas,womenDatas
     }
   }
-  
+
   componentWillMount (){
     this.setState({
       //basicDatas,menDatas,womenDatas
     })
-    
+
     //console.log(this.state);
   }
-  
-  
+
+
   tabChanged(tabItem, index){
     /*let datas = mockData[tabItem.val] || [];
     this.setState({
@@ -257,7 +257,7 @@ class BodyGenerationPanel extends React.Component  {
     this.state.displayIndex = index;*/
     this.forceUpdate();
   }
-  
+
   subTabChanged(tabItem, subTabItem){
     /*let datas = mockData[tabItem.val];
     datas = datas?(datas[subTabItem.val] || []) :[];
@@ -265,11 +265,11 @@ class BodyGenerationPanel extends React.Component  {
       datas
     });*/
   }
-  
+
   finish(){
-    this.context.router.push('/body')
+    this.context.router.push('/')
   }
-  
+
   onScrollValueChanged(name, value){
     //console.log(name+'--'+value);
     let showMen;
@@ -284,8 +284,8 @@ class BodyGenerationPanel extends React.Component  {
     this.forceUpdate();
   }
 
-  
-  
+
+
   render() {
     return (
       <div>
@@ -304,7 +304,7 @@ class BodyGenerationPanel extends React.Component  {
             </div>
           })
         }
-        
+
         <div className='menOptsWrap' style={{display:this.state.showMenOptions?'block':'none'}}>
         {
           this.state.menDatas.map((item,i)=>{
@@ -322,7 +322,7 @@ class BodyGenerationPanel extends React.Component  {
           })
         }
         </div>
-        
+
         <div className='womenOptsWrap' style={{display:!this.state.showMenOptions?'block':'none'}}>
         {
           this.state.womenDatas.map((item,i)=>{
@@ -340,6 +340,7 @@ class BodyGenerationPanel extends React.Component  {
           })
         }
         </div>
+        <button onClick={()=>{this.finish()}}>完成</button>
       </div>
     );
   }
