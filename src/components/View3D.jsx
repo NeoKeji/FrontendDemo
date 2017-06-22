@@ -1,5 +1,6 @@
 import React from 'react';
 import Model3D from '../js/Model3d.js'
+import '../assets/style/view3D.less';
 
 const VIEW_DEFAULT_PARAMS  = {
   ambientLight : 0xBBBBBB,
@@ -22,6 +23,11 @@ const VIEW_DEFAULT_PARAMS  = {
   useWebglRender: true
 };
 
+const objectNames = {
+    groundPlane: 'ground-plane',
+    coordAxes:  'coord-axes'
+}
+
 //View3D component used to display 3d model
 class View3D extends React.Component {
 
@@ -38,6 +44,11 @@ class View3D extends React.Component {
     this.mouseY = 0;
     this.windowHalfX = 0;
     this.windowHalfY = 0;
+
+    this.effectController = {
+        showGround: true,
+        showAxes:   false
+    };
   }
 
   render() {
@@ -49,12 +60,24 @@ class View3D extends React.Component {
   }
 
   componentDidMount(){
-
+    this.setupEffectController();
     this.initView();
     this.display();
   }
 
+  setupEffectController(){
+      var effectController = new dat.GUI({
+          height:28*2 - 1
+      });
+
+      effectController.domElement.id = 'effect-controller';
+
+      effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
+      effectController.add(this.effectController, 'showAxes').name("Show Coordinate Axes");
+  }
+
   initView(){
+    // this.scene = new THREE.Scene();
 
     this.createRenderer(this.viewWidth, this.viewHeight, VIEW_DEFAULT_PARAMS.useWebglRender);
 
@@ -67,13 +90,18 @@ class View3D extends React.Component {
     //model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
     model.loadObjModel("../../Resources/Models/Male/KbSimplified.obj", "../../Resources/Models/Male/KbSimplified.png");
     //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
-    this.drawPlane(1,12,12)
+    if(this.effectController.showGround)
+        this.drawPlane(1,12,12)
+    if(this.effectController.showAxes)
+        this.drawAxes(15);
+
 
     this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
 
     window.addEventListener( 'resize', this.resizeFunc );
 
   }
+
 
   drawGeometry(scene){
     var triangleGeometry = new THREE.Geometry();
@@ -95,6 +123,18 @@ class View3D extends React.Component {
 
   display() {
     requestAnimationFrame(()=>{this.display();});
+
+    if(this.effectController.showGround){
+        this.drawPlane(1,12,12);
+    }else{
+        this.removePlane();
+    }
+
+    if(this.effectController.showAxes){
+        this.drawAxes(15);
+    }else{
+        this.removeAxes();
+    }
 
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
@@ -142,7 +182,7 @@ class View3D extends React.Component {
     this.scene.add( ambientLight );
 
     var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight );
-    directionalLight.position.set( 0, 0, 1000 ).normalize();
+    directionalLight.position.set( 0, 0, 1000 );
     this.scene.add( directionalLight );
 
     var light = new THREE.PointLight(0xffffff);
@@ -163,6 +203,10 @@ class View3D extends React.Component {
   //step_size is the size of each grid_size
   //size_x, size_z decide plane size in x and z direction
   drawPlane(step_size, size_x, size_z){
+    if(this.scene.getObjectByName(objectNames.groundPlane) != null){
+        return;
+    }
+
     if(size_x <= 0 || size_z <= 0){
       return;
     }
@@ -192,8 +236,34 @@ class View3D extends React.Component {
     }
 
     var gridPlane = new THREE.Line(gridGeometry, wireframeMaterial, THREE.LinePieces);
+    gridPlane.name = objectNames.groundPlane;
     this.scene.add(gridPlane);
   }
+
+  removePlane(){
+      var object = this.scene.getObjectByName(objectNames.groundPlane);
+      if(object != null){
+          this.scene.remove(object);
+      }
+  }
+
+  drawAxes(size){
+      if(this.scene.getObjectByName(objectNames.coordAxes) != null){
+          return;
+      }
+
+      var axisHelper = new THREE.AxisHelper(size);
+      axisHelper.name = objectNames.coordAxes;
+      this.scene.add(axisHelper);
+  }
+
+  removeAxes(){
+      var object = this.scene.getObjectByName(objectNames.coordAxes);
+      if(object != null){
+          this.scene.remove(object);
+      }
+  }
+
 }
 
 export default View3D;
