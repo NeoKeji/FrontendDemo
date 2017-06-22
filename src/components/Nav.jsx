@@ -8,7 +8,7 @@ class Nav extends React.Component {
       return (
         <nav className='navbar'>
           <div className='nav-item-wrap'>
-            <Link to='/'><img src='../src/assets/images/logo_u23.png'/></Link>
+            <Link to='/'><img className='nav-logo' src='../src/assets/images/logo.png'/></Link>
             <a href='javascript:;' className='navIcon '><i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <a href='javascript:;' className='navIcon '><i className="fa fa-video-camera" aria-hidden="true"></i></a>
             <a href='javascript:;' className='navIcon '><i className="fa fa-globe" aria-hidden="true"></i></a>
