@@ -73,7 +73,7 @@ class View3D extends React.Component {
       effectController.domElement.id = 'effect-controller';
 
       effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
-      effectController.add(this.effectController, 'showAxes').name("Show Coordinate Axes");
+      effectController.add(this.effectController, 'showAxes').name("Show Axes");
   }
 
   initView(){
@@ -97,12 +97,13 @@ class View3D extends React.Component {
 
 
     this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+    this.controls.target.set(5,6,0)
 
     window.addEventListener( 'resize', this.resizeFunc );
 
   }
 
-
+  //Add a basic triangle geometry for test purpose
   drawGeometry(scene){
     var triangleGeometry = new THREE.Geometry();
 
@@ -155,6 +156,9 @@ class View3D extends React.Component {
 
     var width = window.innerWidth,
         height = window.innerHeight;
+    if(height == 0){
+        height = 1;
+    }
 
     this.renderer.setSize(width, height);
     this.camera.aspect = width/height;
@@ -193,9 +197,10 @@ class View3D extends React.Component {
   addCamera(){
 
     this.camera = new THREE.PerspectiveCamera(45, this.viewWidth/this.viewHeight, 0.1, 4000);
-    this.camera.position.set(0, 10, 50);
+    this.camera.position.set(3, 6, 40);
     this.camera.up.set(0,1,0);
-    this.camera.lookAt(new THREE.Vector3(0, 10, 0));
+    //this.camera.target.set(0,50,0);
+    // this.camera.lookAt(new THREE.Vector3(0, -100, 0));
     this.scene.add(this.camera);
 
   }

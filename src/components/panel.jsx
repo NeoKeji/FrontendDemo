@@ -2,8 +2,8 @@ import React from 'react';
 
 
 class Panel extends React.Component {
-  
-  
+
+
   render() {
     return (
       <div className={'ctrlPanel '+this.props.clazz}>

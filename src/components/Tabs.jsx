@@ -3,7 +3,7 @@ import '../assets/style/tabs.less';
 
 
 class Tabs extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -11,10 +11,10 @@ class Tabs extends React.Component {
       currentSubItem:null,
       subItems:[],
       propOptions:{}
-      
+
     }
   }
-  
+
   tabFocus(index){
     let tabItem = this.state.propOptions.tabItems;
     let item = tabItem[index];
@@ -22,7 +22,7 @@ class Tabs extends React.Component {
       this._tabFocus(item, index)
     }
   }
-  
+
   _tabFocus(item, index){
     if(!item.active){
       item.active= true;
@@ -46,12 +46,12 @@ class Tabs extends React.Component {
         })
         this.refs.tabsContentPanel.tabChanged(item, index);
         this.forceUpdate();
-        
+
       }
     }
-    
+
   }
-  
+
   _subTabFocus(item){
     //if(item && !item.active){
       let lastItem = this.state.currentSubItem;
@@ -65,23 +65,23 @@ class Tabs extends React.Component {
       this.refs.tabsContentPanel.subTabChanged(this.state.currentItem, item);
       this.forceUpdate();
     //}
-    
+
   }
-  
+
   componentWillMount(){
-    //深拷贝props 避免多组件见的props指针问题
+    //深拷贝props 避免多组件间的props指针问题
     //let propOptions = Object.assign({},this.props);
     let propOptions = this.props;
-    if(this.props === Tabs.defaultProps){ 
+    if(this.props === Tabs.defaultProps){
       propOptions = JSON.parse(JSON.stringify(this.props));
     }
     this.setState({
       propOptions
     });
   }
-  
+
   componentDidMount (){
-    
+
     this.state.propOptions.tabItems.map((item,i)=>{
       delete item.active;
       if(i===this.state.propOptions.defaultActive){
@@ -89,7 +89,7 @@ class Tabs extends React.Component {
       }
     });
   }
-  
+
   render() {
     return (
       <div  className="tab-wrap ">
@@ -98,8 +98,8 @@ class Tabs extends React.Component {
             {
               this.state.propOptions.tabItems.map((item,i)=>{
                 let itemClass = item.active?'active':'';
-                return <li  className={itemClass} 
-                            key={item.val} 
+                return <li  className={itemClass}
+                            key={item.val}
                             onClick={()=>{this._tabFocus(item, i)}}>{item.text}</li>
               })
             }
@@ -110,8 +110,8 @@ class Tabs extends React.Component {
             {
               this.state.subItems.map((item,i)=>{
                 let itemClass = item.active?'active':'';
-                return <li  className={itemClass} 
-                            key={item.val} 
+                return <li  className={itemClass}
+                            key={item.val}
                             onClick={()=>{this._subTabFocus(item)}}>{item.text}</li>
               })
             }
@@ -120,7 +120,7 @@ class Tabs extends React.Component {
         <div className='tabs-content-panel'>
             <this.props.tabsContentPanel ref='tabsContentPanel' tabFocus={(index)=>{this.tabFocus(index)}}/>
         </div>
-        
+
       </div>
     );
   }
@@ -141,8 +141,8 @@ Tabs.defaultProps  = {
       text: 'Tops',
       val: 'Tops',
     },{
-      text: 'Suits',
-      val: 'Suits',
+      text: 'Jackets',
+      val: 'Jackets',
     },{
       text: 'Shoes',
       val: 'Shoes',
