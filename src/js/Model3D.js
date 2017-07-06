@@ -44,7 +44,7 @@ class Model3D{
 
   loadObjModelWithMtl(model, mtl){
     var self = this;
-    THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+    //THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
 
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.load( mtl, function ( materials ) {
@@ -57,7 +57,7 @@ class Model3D{
 
         self.mesh = object;
         self.scene.add(object);
-      }, this.onLoadProgress, this.onLoadError );
+    }, self.onLoadProgress, self.onLoadError );
 
     });
 

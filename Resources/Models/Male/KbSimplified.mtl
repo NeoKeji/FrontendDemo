@@ -1,0 +1,8 @@
+newmtl KobeTexture
+Ns 30.0000
+Kd 0.7 0.7 0.7
+Ks 0.03 0.03 0.03
+Ka 0 0 0
+illum 3
+d 1
+map_Kd Resources\Models\Male\KbSimplified.png

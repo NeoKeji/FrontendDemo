@@ -3,16 +3,26 @@ import Model3D from '../js/Model3d.js'
 import '../assets/style/view3D.less';
 
 const VIEW_DEFAULT_PARAMS  = {
-  ambientLight : 0xBBBBBB,
-  directionalLight : 0xffffff,
+  ambientLight:{
+      color : 0xFFFFFF,
+      intensity: 0.5
+  },
+  directionalLight:{
+      color: 0xffffff,
+      intensity: 0.3
+  },
+  pointLight:{
+      color: 0xFFF0DD,
+      intensity: 1.0
+  },
   z:250,
   fileName:{
-    obj:'male02.obj',
-    mtl:'male02_dds.mtl'
+    obj:'KbSimplified.obj',
+    mtl:'KbSimplified.mtl'
   },
   path:{
-    obj:'Resources/Models/male02/',
-    mtl:'Resources/Models/male02/'
+    obj:'Resources/Models/Male/',
+    mtl:'Resources/Models/Male/'
   },
   modelInitOffset:{
     x:-50,
@@ -44,6 +54,11 @@ class View3D extends React.Component {
     this.mouseY = 0;
     this.windowHalfX = 0;
     this.windowHalfY = 0;
+    this.headLight = null;
+    this.groundPlane = null;
+    this.axes = null;
+
+    this.resizeFunc = this.resizeFunc.bind(this);
 
     this.effectController = {
         showGround: true,
@@ -87,17 +102,14 @@ class View3D extends React.Component {
 
     var model = new Model3D(this.scene);
 
-    //model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
-    model.loadObjModel("../../Resources/Models/Male/KbSimplified.obj", "../../Resources/Models/Male/KbSimplified.png");
+    model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
+    //model.loadObjModel("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.png");
+    //model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
     //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
     if(this.effectController.showGround)
         this.drawPlane(1,12,12)
     if(this.effectController.showAxes)
         this.drawAxes(15);
-
-
-    this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
-    this.controls.target.set(5,6,0)
 
     window.addEventListener( 'resize', this.resizeFunc );
 
@@ -136,6 +148,8 @@ class View3D extends React.Component {
     }else{
         this.removeAxes();
     }
+
+    this.headLight.position.copy(this.camera.position);
 
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
@@ -182,33 +196,34 @@ class View3D extends React.Component {
 
   addLighting() {
 
-    var ambientLight = new THREE.AmbientLight(VIEW_DEFAULT_PARAMS.ambientLight );
+    var ambientLight = new THREE.AmbientLight(VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
     this.scene.add( ambientLight );
 
-    var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight );
+    var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.directionalLight.intensity);
     directionalLight.position.set( 0, 0, 1000 );
     this.scene.add( directionalLight );
 
-    var light = new THREE.PointLight(0xffffff);
-    light.position.set(-100,200,100);
-    this.scene.add(light);
+    this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
+    //light.position.set(-100,200,100); Fix headLight position to the camera
+    this.scene.add(this.headLight);
   }
 
   addCamera(){
 
     this.camera = new THREE.PerspectiveCamera(45, this.viewWidth/this.viewHeight, 0.1, 4000);
-    this.camera.position.set(3, 6, 40);
+    this.camera.position.set(3, 10, 40);
     this.camera.up.set(0,1,0);
-    //this.camera.target.set(0,50,0);
-    // this.camera.lookAt(new THREE.Vector3(0, -100, 0));
+    //this.camera.lookAt(new THREE.Vector3(0, 6, 0));
     this.scene.add(this.camera);
 
+    this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+    this.controls.target.set(5,8,0);
   }
 
   //step_size is the size of each grid_size
   //size_x, size_z decide plane size in x and z direction
   drawPlane(step_size, size_x, size_z){
-    if(this.scene.getObjectByName(objectNames.groundPlane) != null){
+    if(this.groundPlane != null){
         return;
     }
 
@@ -243,29 +258,42 @@ class View3D extends React.Component {
     var gridPlane = new THREE.Line(gridGeometry, wireframeMaterial, THREE.LinePieces);
     gridPlane.name = objectNames.groundPlane;
     this.scene.add(gridPlane);
+    this.groundPlane = gridPlane;
   }
 
   removePlane(){
-      var object = this.scene.getObjectByName(objectNames.groundPlane);
+      if(this.groundPlane == null){
+          return;
+      }
+
+      var object = this.scene.getObjectById(this.groundPlane.id);
       if(object != null){
           this.scene.remove(object);
+          this.groundPlane = null;
       }
   }
 
   drawAxes(size){
-      if(this.scene.getObjectByName(objectNames.coordAxes) != null){
-          return;
-      }
+    if(this.axes != null){
+        return;
+    }
 
       var axisHelper = new THREE.AxisHelper(size);
       axisHelper.name = objectNames.coordAxes;
       this.scene.add(axisHelper);
+      this.axes = axisHelper;
   }
 
   removeAxes(){
-      var object = this.scene.getObjectByName(objectNames.coordAxes);
+    if(this.axes == null){
+        return;
+    }
+
+    var object = this.scene.getObjectById(this.axes.id);
+
       if(object != null){
           this.scene.remove(object);
+          this.axes = null
       }
   }
 
