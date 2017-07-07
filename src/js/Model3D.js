@@ -1,7 +1,8 @@
 //class of 3d model
 class Model3D{
-  constructor(scene){
+  constructor(scene, loadDone){
     this.scene = scene !== undefined ? scene : new THREE.Scene();
+    this.modelLoadDone = loadDone !== undefined ? loadDone: (mesh) => {};
     this.mesh = null;
   }
 
@@ -38,26 +39,30 @@ class Model3D{
 
       this.mesh = object;
       this.scene.add(object);
+
+      this.modelLoadDone(this.mesh);
+
     }, this.onLoadProgress, this.onLoadError);
 
   }
 
   loadObjModelWithMtl(model, mtl){
-    var self = this;
     //THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
 
     var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.load( mtl, function ( materials ) {
+    mtlLoader.load( mtl, ( materials ) => {
 
-      materials.preload();
+    materials.preload();
 
-      var objLoader = new THREE.OBJLoader();
-      objLoader.setMaterials( materials );
-      objLoader.load( model, function ( object ) {
+    var objLoader = new THREE.OBJLoader();
+    objLoader.setMaterials( materials );
+    objLoader.load( model, ( object ) => {
+      this.mesh = object;
+      this.scene.add(object);
 
-        self.mesh = object;
-        self.scene.add(object);
-    }, self.onLoadProgress, self.onLoadError );
+      this.modelLoadDone(this.mesh);
+
+    }, this.onLoadProgress, this.onLoadError );
 
     });
 

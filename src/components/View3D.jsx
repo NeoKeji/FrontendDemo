@@ -29,6 +29,11 @@ const VIEW_DEFAULT_PARAMS  = {
     y:-95,
     z:0
   },
+  camera:{
+    fov:  45,
+    near: 0.1,
+    far:  1000
+  },
   clearColor: 0xF7F7F7,
   useWebglRender: true
 };
@@ -59,6 +64,7 @@ class View3D extends React.Component {
     this.axes = null;
 
     this.resizeFunc = this.resizeFunc.bind(this);
+    this.modelLoadDone = this.modelLoadDone.bind(this);
 
     this.effectController = {
         showGround: true,
@@ -95,17 +101,16 @@ class View3D extends React.Component {
     // this.scene = new THREE.Scene();
 
     this.createRenderer(this.viewWidth, this.viewHeight, VIEW_DEFAULT_PARAMS.useWebglRender);
-
     this.addCamera();
-
     this.addLighting();
 
-    var model = new Model3D(this.scene);
+    var model = new Model3D(this.scene, this.modelLoadDone);
 
     model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
     //model.loadObjModel("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.png");
     //model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
     //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
+
     if(this.effectController.showGround)
         this.drawPlane(1,12,12)
     if(this.effectController.showAxes)
@@ -113,6 +118,10 @@ class View3D extends React.Component {
 
     window.addEventListener( 'resize', this.resizeFunc );
 
+  }
+
+  modelLoadDone(model){
+    this.fitCamera(model);
   }
 
   //Add a basic triangle geometry for test purpose
@@ -209,8 +218,7 @@ class View3D extends React.Component {
   }
 
   addCamera(){
-
-    this.camera = new THREE.PerspectiveCamera(45, this.viewWidth/this.viewHeight, 0.1, 4000);
+    this.camera = new THREE.PerspectiveCamera(VIEW_DEFAULT_PARAMS.camera.fov, this.viewWidth/this.viewHeight, VIEW_DEFAULT_PARAMS.camera.near, VIEW_DEFAULT_PARAMS.camera.far);
     this.camera.position.set(3, 10, 40);
     this.camera.up.set(0,1,0);
     //this.camera.lookAt(new THREE.Vector3(0, 6, 0));
@@ -218,6 +226,22 @@ class View3D extends React.Component {
 
     this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
     this.controls.target.set(5,8,0);
+  }
+
+  fitCamera(mesh){
+    const viewObjectRatio = 1.6;
+
+    var modelBox,modelHeight,modelWidth,modelPos;
+    if(mesh != null){
+      modelBox = new THREE.Box3().setFromObject(mesh);
+      modelHeight = modelBox.max.y - modelBox.min.y;
+      modelWidth = modelBox.max.x - modelBox.min.x;
+      modelPos = modelBox.getCenter();
+    }
+
+    var dist = modelHeight * viewObjectRatio/ (2 * Math.tan(VIEW_DEFAULT_PARAMS.camera.fov/2 * Math.PI/180));
+    this.camera.position.set(modelPos.x, modelPos.y + 5, modelPos.z + dist);
+    this.controls.target.set(modelPos.x, modelPos.y, modelPos.z);
   }
 
   //step_size is the size of each grid_size
