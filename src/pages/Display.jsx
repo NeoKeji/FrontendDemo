@@ -6,7 +6,7 @@ import Tabs from '../components/Tabs.jsx';
 import TabsContentPanel from '../components/TabsContentPanel.jsx';
 
 
-class App extends React.Component {
+class Display extends React.Component {
   constructor(props){
     super(props);
 
@@ -23,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Display;

@@ -4,6 +4,12 @@ import Panel2 from './Panel.jsx';
 class TabsContentPanel extends React.Component  {
   constructor(props){
     super(props);
+
+    this.selTabId = null;
+    this.selSubTabId = null;
+    this.selItemId = null;
+
+
     this.state = {
       content:'',
       datas:[],
@@ -23,6 +29,9 @@ class TabsContentPanel extends React.Component  {
   }
 
   tabChanged(tabItem){
+    this.selTabId = tabItem.val;
+    this.selSubTabId = null;
+
     let datas = mockData[tabItem.val] || [];
     this.setState({
       datas
@@ -32,6 +41,9 @@ class TabsContentPanel extends React.Component  {
   }
 
   subTabChanged(tabItem, subTabItem){
+    this.selTabId = tabItem.val;
+    this.selSubTabId = subTabItem.val;
+
     let datas = mockData[tabItem.val];
     datas = datas?(datas[subTabItem.val] || []) :[];
     this.setState({
@@ -40,8 +52,12 @@ class TabsContentPanel extends React.Component  {
     this.closeDetail();
   }
 
-  itemClicked(item){
-    console.log(item.code);
+  itemClicked(item,index){
+    this.selItemId = index;
+    console.log(this.selTabId);
+    if(this.selSubTabId != null)console.log(this.selSubTabId);
+    console.log(this.selItemId);
+
     this.setState({
       isShowDetail : true,
       detailItem : item
@@ -68,14 +84,7 @@ class TabsContentPanel extends React.Component  {
         <div className='content-items' style={{display: !this.state.isShowDetail?'block':'none'}}>
           {
             this.state.datas.map((item,i)=>{
-              let subs = item.subTabs;
-              if(subs){
-                subs.map((sub, i)=>{
-                  return <img src={sub.img} key={sub.code} className='view-item' onClick={()=>{this.itemClicked(sub)}}/>
-                })
-              }else{
-                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item)}}/>
-              }
+                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item, i)}}/>
             })
           }
         </div>
@@ -396,7 +405,19 @@ var mockData = {
         },
 
       ]
-  }
+  },
+
+  Scene: [
+
+  ],
+
+  Movies: [
+
+  ],
+
+  Worlds: [
+
+  ]
 }
 
 
