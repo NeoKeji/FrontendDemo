@@ -70,11 +70,13 @@ class View3D extends React.Component {
         showGround: true,
         showAxes:   false
     };
+
+    this.viewDOM = null;
   }
 
   render() {
       return (
-         <div ref='viewContainer'>
+         <div ref={(dom) => {this.viewDOM = dom}}>
          View3D
          </div>
       );
@@ -200,7 +202,7 @@ class View3D extends React.Component {
     this.renderer.setSize(width, height);
     this.renderer.setClearColor(VIEW_DEFAULT_PARAMS.clearColor);
     //document.body.appendChild(this.renderer.domElement);
-    this.refs.viewContainer.getDOMNode().appendChild( this.renderer.domElement );
+    this.viewDOM.getDOMNode().appendChild( this.renderer.domElement );
   }
 
   addLighting() {

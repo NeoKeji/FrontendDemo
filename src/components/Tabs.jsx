@@ -6,12 +6,14 @@ class Tabs extends React.Component {
 
   constructor(props){
     super(props);
+
+    this.currentItem = null;
+    this.currentSubItem = null;
+    this.tabContent = null;
+
     this.state = {
-      currentItem:null,
-      currentSubItem:null,
       subItems:[],
       propOptions:{}
-
     }
   }
 
@@ -26,13 +28,12 @@ class Tabs extends React.Component {
   _tabFocus(item, index){
     if(!item.active){
       item.active= true;
-      let lastItem = this.state.currentItem;
+      let lastItem = this.currentItem;
       if(lastItem){
         lastItem.active = false;
       }
-      this.setState({
-        currentItem : item
-      });
+      this.currentItem = item;
+
       if(item.subTabs && (item.subTabs instanceof Array) && item.subTabs.length>0){
         this.setState({
           subItems : item.subTabs
@@ -44,7 +45,7 @@ class Tabs extends React.Component {
         this.setState({
           subItems : []
         })
-        this.refs.tabsContentPanel.tabChanged(item, index);
+        this.tabContent.tabChanged(item, index);
         this.forceUpdate();
 
       }
@@ -54,15 +55,14 @@ class Tabs extends React.Component {
 
   _subTabFocus(item){
     //if(item && !item.active){
-      let lastItem = this.state.currentSubItem;
+      let lastItem = this.currentSubItem;
       if(lastItem){
         lastItem.active = false;
       }
       item.active= true;
-      this.setState({
-        currentSubItem : item
-      });
-      this.refs.tabsContentPanel.subTabChanged(this.state.currentItem, item);
+      this.currentSubItem = item;
+
+      this.tabContent.subTabChanged(this.currentItem, item);
       this.forceUpdate();
     //}
 
@@ -118,7 +118,7 @@ class Tabs extends React.Component {
           </ul>
         </div>
         <div className='tabs-content-panel'>
-            <this.props.tabsContentPanel ref='tabsContentPanel' tabFocus={(index)=>{this.tabFocus(index)}}/>
+            <this.props.tabsContentPanel ref={(component) => this.tabContent = component} tabFocus={(index)=>{this.tabFocus(index)}}/>
         </div>
 
       </div>
@@ -132,17 +132,17 @@ Tabs.defaultProps  = {
     text: 'Clothes',
     val: 'Clothes',
     subTabs:[{
-      text: 'Dress',
-      val: 'Dress',
-    },{
-      text: 'Pants',
-      val: 'Pants',
-    },{
       text: 'Tops',
       val: 'Tops',
     },{
       text: 'Jackets',
       val: 'Jackets',
+    },{
+      text: 'Dress',
+      val: 'Dress',
+    },{
+      text: 'Pants',
+      val: 'Pants',
     },{
       text: 'Shoes',
       val: 'Shoes',

@@ -1,8 +1,163 @@
 import React from 'react';
 import Panel2 from './Panel.jsx';
 
+class TabsContentPanel extends React.Component  {
+  constructor(props){
+    super(props);
+    this.state = {
+      content:'',
+      datas:[],
+      isShowDetail:false,
+      detailItem:{}
+    }
+  }
+
+  buildItem(datas){
+    /*datas.map((item, i)=>{
+      let subs = item.subTabs || [];
+    })*/
+    this.setState({
+      datas
+    });
+    this.forceUpdate();
+  }
+
+  tabChanged(tabItem){
+    let datas = mockData[tabItem.val] || [];
+    this.setState({
+      datas
+    });
+    this.closeDetail();
+
+  }
+
+  subTabChanged(tabItem, subTabItem){
+    let datas = mockData[tabItem.val];
+    datas = datas?(datas[subTabItem.val] || []) :[];
+    this.setState({
+      datas
+    });
+    this.closeDetail();
+  }
+
+  itemClicked(item){
+    console.log(item.code);
+    this.setState({
+      isShowDetail : true,
+      detailItem : item
+    });
+    this.forceUpdate();
+  }
+
+  closeDetail(){
+    this.setState({
+      isShowDetail : false,
+      detailItem : {}
+    });
+    this.forceUpdate();
+  }
+
+  rawMarkup(content){
+      //var md = new Remarkable();
+      return { __html: content };
+  }
+
+  render() {
+    return (
+      <div >
+        <div className='content-items' style={{display: !this.state.isShowDetail?'block':'none'}}>
+          {
+            this.state.datas.map((item,i)=>{
+              let subs = item.subTabs;
+              if(subs){
+                subs.map((sub, i)=>{
+                  return <img src={sub.img} key={sub.code} className='view-item' onClick={()=>{this.itemClicked(sub)}}/>
+                })
+              }else{
+                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item)}}/>
+              }
+            })
+          }
+        </div>
+        <div className='detail' style={{display: this.state.isShowDetail?'flex':'none'}}>
+          <div className='detail-image'>
+            <img src={this.state.detailItem?this.state.detailItem.img:''}/>
+            <div className='detail-price'>{this.state.detailItem.price}</div>
+          </div>
+          <div className='detail-msg'>
+            <section>
+              <h4>Product code</h4>
+              <span>{this.state.detailItem.code}</span>
+            </section>
+            <section>
+              <h4>Product Description</h4>
+              <div dangerouslySetInnerHTML={this.rawMarkup(this.state.detailItem.desc)} />
+            </section>
+            <section>
+              <h4>Care Instructions</h4>
+              <div>{this.state.detailItem.care}</div>
+            </section>
+            <div className='detail-msg-action'>
+                <button onClick={()=>{}}>购买</button>
+                <button onClick={()=>{this.closeDetail()}}>返回</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+//Mock Data
 var mockData = {
   Clothes : {
+    Tops : [{
+      code:'D6298118',
+      desc: 'Kobe Lakers Home Jersey<br/>Sports Jersey<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+      care: 'Professional launder recommended',
+      img : '../src/assets/images/clothing/u118.png',
+      price: '$99'
+    },{
+      code:'D6298497',
+      desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+      care: 'Professional launder recommended',
+      img : '../src/assets/images/clothing/u97.png',
+      price: '$29'
+      },{
+        code:'D6298495',
+        desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+        care: 'Professional launder recommended',
+        img : '../src/assets/images/clothing/u95.png',
+        price: '$39'
+      }],
+    Jackets : [
+        {
+          code:'D6398301',
+          desc: 'Nike Kobe Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+          care: 'Professional launder recommended',
+          img : '../src/assets/images/clothing/u301.png',
+          price: '$159'
+          },{
+            code:'D6398302',
+            desc: 'Blue and White Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : '../src/assets/images/clothing/u302.png',
+            price: '$109'
+          },{
+            code:'D6398303',
+            desc: 'Elegent Sports Coat<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : '../src/assets/images/clothing/u303.png',
+            price: '$439'
+          },{
+            code:'D6398304',
+            desc: 'Elegent Nylon Navy Blue Jacket<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : '../src/assets/images/clothing/u304.png',
+            price: '$199'
+          }
+    ],
     Dress : [{
       code:'D609841',
       desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
@@ -107,52 +262,6 @@ var mockData = {
         img : '../src/assets/images/clothing/u80.png',
         price: '$219'
       }],
-    Tops : [{
-      code:'D6298118',
-      desc: 'Kobe Lakers Home Jersey<br/>Sports Jersey<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u118.png',
-      price: '$99'
-    },{
-      code:'D6298497',
-      desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u97.png',
-      price: '$29'
-      },{
-        code:'D6298495',
-        desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u95.png',
-        price: '$39'
-      }],
-    Jackets : [
-        {
-          code:'D6398301',
-          desc: 'Nike Kobe Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-          care: 'Professional launder recommended',
-          img : '../src/assets/images/clothing/u301.png',
-          price: '$159'
-          },{
-            code:'D6398302',
-            desc: 'Blue and White Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-            care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u302.png',
-            price: '$109'
-          },{
-            code:'D6398303',
-            desc: 'Elegent Sports Coat<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-            care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u303.png',
-            price: '$439'
-          },{
-            code:'D6398304',
-            desc: 'Elegent Nylon Navy Blue Jacket<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-            care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u304.png',
-            price: '$199'
-          }
-    ],
     Shoes : [{
               code:'D6498401',
               desc: 'Nike Kobe XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
@@ -287,114 +396,6 @@ var mockData = {
         },
 
       ]
-  }
-}
-
-
-class TabsContentPanel extends React.Component  {
-  constructor(props){
-    super(props);
-    this.state = {
-      content:'',
-      datas:[],
-      isShowDetail:false,
-      detailItem:{}
-    }
-  }
-
-  buildItem(datas){
-    /*datas.map((item, i)=>{
-      let subs = item.subTabs || [];
-    })*/
-    this.setState({
-      datas
-    });
-    this.forceUpdate();
-  }
-
-  tabChanged(tabItem){
-    let datas = mockData[tabItem.val] || [];
-    this.setState({
-      datas
-    });
-    this.closeDetail();
-
-  }
-
-  subTabChanged(tabItem, subTabItem){
-    let datas = mockData[tabItem.val];
-    datas = datas?(datas[subTabItem.val] || []) :[];
-    this.setState({
-      datas
-    });
-    this.closeDetail();
-  }
-
-  itemClicked(item){
-    console.log(item.code);
-    this.setState({
-      isShowDetail : true,
-      detailItem : item
-    });
-    this.forceUpdate();
-  }
-
-  closeDetail(){
-    this.setState({
-      isShowDetail : false,
-      detailItem : {}
-    });
-    this.forceUpdate();
-  }
-
-  rawMarkup(content){
-      //var md = new Remarkable();
-      return { __html: content };
-  }
-
-  render() {
-    return (
-      <div >
-        <div className='content-items' style={{display: !this.state.isShowDetail?'block':'none'}}>
-          {
-            this.state.datas.map((item,i)=>{
-              let subs = item.subTabs;
-              if(subs){
-                subs.map((sub, i)=>{
-                  return <img src={sub.img} key={sub.code} className='view-item' onClick={()=>{this.itemClicked(sub)}}/>
-                })
-              }else{
-                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item)}}/>
-              }
-            })
-          }
-        </div>
-        <div className='detail' style={{display: this.state.isShowDetail?'flex':'none'}}>
-          <div className='detail-image'>
-            <img src={this.state.detailItem?this.state.detailItem.img:''}/>
-            <div className='detail-price'>{this.state.detailItem.price}</div>
-          </div>
-          <div className='detail-msg'>
-            <section>
-              <h4>Product code</h4>
-              <span>{this.state.detailItem.code}</span>
-            </section>
-            <section>
-              <h4>Product Description</h4>
-              <div dangerouslySetInnerHTML={this.rawMarkup(this.state.detailItem.desc)} />
-            </section>
-            <section>
-              <h4>Care Instructions</h4>
-              <div>{this.state.detailItem.care}</div>
-            </section>
-            <div className='detail-msg-action'>
-                <button onClick={()=>{}}>购买</button>
-                <button onClick={()=>{this.closeDetail()}}>返回</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
   }
 }
 

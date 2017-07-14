@@ -3,9 +3,12 @@ import '../assets/style/scrollBar.less';
 
 
 class ScrollBar extends React.Component {
-  
+
   constructor(props){
     super(props);
+
+    this.scrollBarDom = null;
+
     this.state = {
       unit:0,
       name:'',
@@ -16,9 +19,9 @@ class ScrollBar extends React.Component {
       max:400,
       offsetLeft:0
     }
-    
+
   }
-  
+
   btnFocus(e){
     this.setState({
       hasMouseDown:true
@@ -36,11 +39,11 @@ class ScrollBar extends React.Component {
   btnMove(e){
     //console.log(this.state.hasMouseDown);
     if(this.state.hasMouseDown){
-      let scrollBarLeft = this.refs.scrollBar.screenX;
+      let scrollBarLeft = this.scrollBarDom.screenX;
       let x = e.screenX;//e.pageX;
-      let offsetX = this.getOffsetX(e, this.refs.scrollBar);
-      let width = this.refs.scrollBar.getBoundingClientRect().width;
-      
+      let offsetX = this.getOffsetX(e, this.scrollBarDom);
+      let width = this.scrollBarDom.getBoundingClientRect().width;
+
       let value = this.state.max*(offsetX/width);
       value = Math.round(value/this.state.step)*this.state.step;
       let offsetLeft = Math.round((value/this.state.max*width)/this.state.step)*this.state.step;
@@ -55,28 +58,28 @@ class ScrollBar extends React.Component {
       if(value !== oldValue){
         this.setState({
           value : value,
-          offsetLeft 
+          offsetLeft
         });
         if(this.props.onScrollValueChanged){
           this.props.onScrollValueChanged(this.state.name, value);
         }
       }
-      
-      
+
+
     }
-    
+
   }
-  
+
   getOffsetX(event, srcObj){
       var evt =event||window.event;
       //var srcObj = evt.target || evt.srcElement;
       var rect = srcObj.getBoundingClientRect();
       var clientx = evt.clientX;
       return clientx - rect.left;
-  
+
       //return evt.offsetX || (evt.clientX - srcObj.getBoundingClientRect().left);
   }
-  
+
   componentDidMount (){
     window.document.body.addEventListener('mouseup',(e)=>{
       this.btnBlur(e);
@@ -84,16 +87,16 @@ class ScrollBar extends React.Component {
     window.document.body.addEventListener('mousemove',(e)=>{
       this.btnMove(e);
     },false);
-    
-    //this.unitWidth = this.refs.scrollBar.clientWidth/(this.state.max/this.state.step);
+
+    //this.unitWidth = this.scrollBarDom.clientWidth/(this.state.max/this.state.step);
     //console.log('unit: '+this.unitWidth);
-    
+
     let props = Object.assign({},this.props)
     //console.log(props)
-    
-    let width = this.refs.scrollBar.getBoundingClientRect().width;
+
+    let width = this.scrollBarDom.getBoundingClientRect().width;
     let unit = width/100;
-    
+
     this.setState({
       unit,
       name: this.props.name,
@@ -102,12 +105,12 @@ class ScrollBar extends React.Component {
       step : this.props.step,
     })
   }
-  
+
   render() {
     return (
-      <div className='scroll-bar' ref='scrollBar' style={{width:'100%'}}>
-        <div className='scroll-bar-btn' 
-              onMouseDown={(e)=>{this.btnFocus(e)}} 
+      <div className='scroll-bar' ref={(dom) => {this.scrollBarDom = dom}} style={{width:'100%'}}>
+        <div className='scroll-bar-btn'
+              onMouseDown={(e)=>{this.btnFocus(e)}}
               style={{left:this.state.offsetLeft+'px'}}>
           <div className='scroll-bar-value'>
             {this.state.value}
