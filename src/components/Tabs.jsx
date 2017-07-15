@@ -1,4 +1,5 @@
 import React from 'react';
+import TabsContentPanel from './TabsContentPanel.jsx';
 import '../assets/style/tabs.less';
 
 
@@ -15,7 +16,18 @@ class Tabs extends React.Component {
       subItems:[],
       propOptions:{}
     }
+
+    this.handleContentPanelSelection = this.handleContentPanelSelection.bind(this);
   }
+
+  handleContentPanelSelection(selItem){
+    if(selItem != null){
+      this.props.view3dItemSelHandler(true, selItem.itemData.viewImage);
+    }else{
+      this.props.view3dItemSelHandler(false, '');
+    }
+  }
+
 
   tabFocus(index){
     let tabItem = this.state.propOptions.tabItems;
@@ -49,6 +61,14 @@ class Tabs extends React.Component {
         this.forceUpdate();
 
       }
+    }
+
+    //display image for tab selection
+    console.log("in _tabFocus");
+    if(this.currentItem.tabImage){
+      this.props.view3dItemSelHandler(true, this.currentItem.tabImage);
+    }else{
+      this.props.view3dItemSelHandler(false, '');
     }
 
   }
@@ -118,7 +138,7 @@ class Tabs extends React.Component {
           </ul>
         </div>
         <div className='tabs-content-panel'>
-            <this.props.tabsContentPanel ref={(component) => this.tabContent = component} tabFocus={(index)=>{this.tabFocus(index)}}/>
+            <TabsContentPanel ref={(component) => this.tabContent = component} tabFocus={(index)=>{this.tabFocus(index)}} itemSel={this.handleContentPanelSelection}/>
         </div>
 
       </div>
@@ -161,13 +181,14 @@ Tabs.defaultProps  = {
       val: 'Long',
     }]
   },{
+    text: 'Fit',
+    val: 'Fit',
+    tabImage: '../src/assets/images/mainpage/neofit.png',
+  },{
     text: 'Scenes',
     val: 'Scenes',
   },{
-    text: 'Movies',
-    val: 'Movies',
-  },{
-    text: 'Worlds',
+    text: 'NeoWorlds',
     val: 'Worlds',
   }]
 };

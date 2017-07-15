@@ -1,5 +1,7 @@
 import React from 'react';
 import Model3D from '../js/Model3d.js'
+import Panel from './panel.jsx';
+import Tabs from './Tabs.jsx';
 import '../assets/style/view3D.less';
 
 const VIEW_DEFAULT_PARAMS  = {
@@ -63,23 +65,41 @@ class View3D extends React.Component {
     this.groundPlane = null;
     this.axes = null;
 
-    this.resizeFunc = this.resizeFunc.bind(this);
-    this.modelLoadDone = this.modelLoadDone.bind(this);
-
     this.effectController = {
         showGround: true,
         showAxes:   false
     };
 
     this.viewDOM = null;
+
+    this.state = {
+      showImage: false,
+      imageUrl: "../src/assets/images/bodygenerationpage/u649.png"
+    };
+
+    this.resizeFunc = this.resizeFunc.bind(this);
+    this.modelLoadDone = this.modelLoadDone.bind(this);
+    this.handlePanelItemSelection = this.handlePanelItemSelection.bind(this);
   }
 
   render() {
       return (
-         <div ref={(dom) => {this.viewDOM = dom}}>
-         View3D
-         </div>
+        <div>
+           <div className="view3d" ref={(dom) => {this.viewDOM = dom}} style={{display: !this.state.showImage?'block':'None'}}>
+           </div>
+           <div className="demo-image" style={{display: this.state.showImage?'block':'None'}}>
+              <img src={this.state.imageUrl} style={{width:'70%',marginTop:'5%', marginBottom:'2%', marginLeft:'2%', marginRight: '20%'}}/>
+           </div>
+           <Panel content={<Tabs view3dItemSelHandler={this.handlePanelItemSelection}/>}/>
+        </div>
       );
+  }
+
+  handlePanelItemSelection(View3dShowImage, View3dImageUrl){
+      this.setState({
+        showImage: View3dShowImage,
+        imageUrl: View3dImageUrl
+      });
   }
 
   componentDidMount(){

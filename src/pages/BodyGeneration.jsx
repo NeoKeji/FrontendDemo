@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav.jsx';
-import View3D from '../components/View3D.jsx';
-import Panel from '../components/Panel.jsx';
+import Panel from '../components/panel.jsx';
 import BodyGenerationPanel from '../components/BodyGenerationPanel.jsx';
 
 // <Model3D/>
