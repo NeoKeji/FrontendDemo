@@ -363,14 +363,14 @@ var mockData = {
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1001.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },{
             code:'D501002',
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1002.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },{
             code:'D501003',
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
@@ -400,21 +400,21 @@ var mockData = {
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1101.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },{
             code:'D501102',
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1102.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },{
             code:'D501103',
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1103.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },{
             code:'D501104',
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
@@ -459,7 +459,7 @@ var mockData = {
             care: 'Wash at least once/day',
             img : '../src/assets/images/hairstyles/u1204.png',
             price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
         },
 
       ]

@@ -53,10 +53,21 @@ class Model3D{
     mtlLoader.load( mtl, ( materials ) => {
 
     materials.preload();
+    materials.shading = THREE.SmoothShading;
 
     var objLoader = new THREE.OBJLoader();
     objLoader.setMaterials( materials );
     objLoader.load( model, ( object ) => {
+
+      // var modifier = new THREE.BufferSubdivisionModifier( 3 );
+      // object.traverse(function (child) {
+      //   if(child instanceof THREE.Mesh){
+      //     child.geometry.computeVertexNormals();
+      //     child.geometry.computeFaceNormals();
+      //     modifier.modify(child.geometry);
+      //   }
+      //  });
+
       this.mesh = object;
       this.scene.add(object);
 
