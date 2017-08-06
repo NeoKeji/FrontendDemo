@@ -19,8 +19,8 @@ const VIEW_DEFAULT_PARAMS  = {
   },
   z:250,
   fileName:{
-    obj:'KbSimplified.obj',
-    mtl:'KbSimplified.mtl'
+    obj:'KBWithSubDiv.obj',
+    mtl:'KBWithSubDiv.mtl'
   },
   path:{
     obj:'Resources/Models/Male/',
@@ -129,6 +129,8 @@ class View3D extends React.Component {
     var model = new Model3D(this.scene, this.modelLoadDone);
 
     model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
+    //model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDivision.obj", "Resources/Models/Female/AngelababyWithSubDivision.mtl");
+    //model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
     // model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
     //model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
     //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
