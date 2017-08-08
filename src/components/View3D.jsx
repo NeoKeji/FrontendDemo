@@ -2,6 +2,7 @@ import React from 'react';
 import Model3D from '../js/Model3d.js'
 import Panel from './panel.jsx';
 import Tabs from './Tabs.jsx';
+import TabsContentPanel from './TabsContentPanel.jsx';
 import '../assets/style/view3D.less';
 
 const VIEW_DEFAULT_PARAMS  = {
@@ -90,7 +91,7 @@ class View3D extends React.Component {
            <div className="demo-image" style={{display: this.state.showImage?'block':'None'}}>
               <img src={this.state.imageUrl} style={{width:'70%',marginTop:'5%', marginBottom:'2%', marginLeft:'2%', marginRight: '20%'}}/>
            </div>
-           <Panel content={<Tabs view3dItemSelHandler={this.handlePanelItemSelection}/>}/>
+           <Panel content={<Tabs tabsContentPanel={TabsContentPanel} view3dItemSelHandler={this.handlePanelItemSelection}/>}/>
         </div>
       );
   }

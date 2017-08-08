@@ -1,5 +1,4 @@
 import React from 'react';
-import TabsContentPanel from './TabsContentPanel.jsx';
 import '../assets/style/tabs.less';
 
 
@@ -21,10 +20,12 @@ class Tabs extends React.Component {
   }
 
   handleContentPanelSelection(selItem){
-    if(selItem != null){
-      this.props.view3dItemSelHandler(true, selItem.itemData.viewImage);
-    }else{
-      this.props.view3dItemSelHandler(false, '');
+    if(this.props.view3dItemSelHandler){
+      if(selItem != null){
+        this.props.view3dItemSelHandler(true, selItem.itemData.viewImage);
+      }else{
+        this.props.view3dItemSelHandler(false, '');
+      }
     }
   }
 
@@ -64,11 +65,12 @@ class Tabs extends React.Component {
     }
 
     //display image for tab selection
-    console.log("in _tabFocus");
-    if(this.currentItem.tabImage){
-      this.props.view3dItemSelHandler(true, this.currentItem.tabImage);
-    }else{
-      this.props.view3dItemSelHandler(false, '');
+    if(this.props.view3dItemSelHandler){
+      if(this.currentItem.tabImage){
+        this.props.view3dItemSelHandler(true, this.currentItem.tabImage);
+      }else{
+        this.props.view3dItemSelHandler(false, '');
+      }
     }
 
   }
@@ -138,7 +140,7 @@ class Tabs extends React.Component {
           </ul>
         </div>
         <div className='tabs-content-panel'>
-            <TabsContentPanel ref={(component) => this.tabContent = component} tabFocus={(index)=>{this.tabFocus(index)}} itemSel={this.handleContentPanelSelection}/>
+            <this.props.tabsContentPanel ref={(component) => this.tabContent = component} tabFocus={(index)=>{this.tabFocus(index)}} itemSel={this.handleContentPanelSelection}/>
         </div>
 
       </div>
