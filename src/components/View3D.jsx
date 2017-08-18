@@ -65,10 +65,12 @@ class View3D extends React.Component {
         this.headLight = null;
         this.groundPlane = null;
         this.axes = null;
+        this.viewSide = 1;
 
         this.effectController = {
             showGround: true,
-            showAxes:   false
+            showAxes:   false,
+            viewSide: 1
         };
 
         this.viewDOM = null;
@@ -128,6 +130,7 @@ class View3D extends React.Component {
 
         effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
         effectController.add(this.effectController, 'showAxes').name("Show Axes");
+        effectController.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View side");
     }
 
     // Brief: initialize View3D
@@ -197,6 +200,12 @@ class View3D extends React.Component {
             this.drawAxes(15);
         }else{
             this.removeAxes();
+        }
+
+        if(this.viewSide!=this.effectController.viewSide)
+        {
+            this.setLookDirection(this.effectController.viewSide);
+            this.viewSide = this.effectController.viewSide;
         }
 
         this.headLight.position.copy(this.camera.position);
@@ -375,6 +384,27 @@ class View3D extends React.Component {
             this.scene.remove(object);
             this.axes = null
         }
+    }
+
+    setLookDirection(vSide)
+    {
+      switch(vSide)
+      {
+        case "1":
+         this.camera.position.set(3, 10, 40);
+         break;
+        case "2":
+         this.camera.position.set(3, 10, -40);
+         break;
+        case "3":
+         this.camera.position.set(40, 10, 0);
+         break;
+        case "4":
+         this.camera.position.set(-40, 10, 0);
+         break;
+        default:
+         this.camera.position.set(3, 10, 40);
+      }
     }
 
 }
