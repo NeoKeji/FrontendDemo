@@ -1,134 +1,147 @@
 import React from 'react';
 import Panel2 from './panel.jsx';
 
+//class for tab content component
 class TabsContentPanel extends React.Component  {
-  constructor(props){
-    super(props);
+    constructor(props){
+        super(props);
 
-    this.curTabId = null;
-    this.curSubTabId = null;
+        this.curTabId = null;
+        this.curSubTabId = null;
 
-    this.selItem = {
-      tabId: null,
-      subTabId: null,
-      itemId: null,
-      itemData: null
+        this.selItem = {
+            tabId: null,
+            subTabId: null,
+            itemIndex: null,
+            itemData: null
+        }
+
+        this.state = {
+            content:'',
+            datas:[],
+            isShowDetail:false,
+            detailItem:{}
+        }
     }
 
-    this.state = {
-      content:'',
-      datas:[],
-      isShowDetail:false,
-      detailItem:{}
+    buildItem(datas){
+        /*datas.map((item, i)=>{
+          let subs = item.subTabs || [];
+        })*/
+        this.setState({
+            datas
+        });
+        this.forceUpdate();
     }
-  }
 
-  buildItem(datas){
-    /*datas.map((item, i)=>{
-      let subs = item.subTabs || [];
-    })*/
-    this.setState({
-      datas
-    });
-    this.forceUpdate();
-  }
+    // Brief: Function to change tab panel content according to selected tabItem
+    // Params:
+    // obj tabItem， the selected tabItem, use tabItem.id to find tab content data
+    tabChanged(tabItem){
+        this.curTabId = tabItem.id;
+        this.curSubTabId = null;
 
-  tabChanged(tabItem){
-    this.curTabId = tabItem.val;
-    this.curSubTabId = null;
+        let datas = mockData[this.curTabId] || [];
+        this.setState({
+            datas
+        });
+        this.closeDetail();
 
-    let datas = mockData[this.curTabId] || [];
-    this.setState({
-      datas
-    });
-    this.closeDetail();
+    }
 
-  }
+    // Brief: Function to change tab panel content according to selected subTabItem
+    // Params:
+    // obj tabItem, subTabItem, the selected tabItem and subTabItem, use their id to find tab content data
+    subTabChanged(tabItem, subTabItem){
+        this.curTabId = tabItem.id;
+        this.curSubTabId = subTabItem.id;
 
-  subTabChanged(tabItem, subTabItem){
-    this.curTabId = tabItem.val;
-    this.curSubTabId = subTabItem.val;
+        let datas = mockData[this.curTabId];
+        datas = datas?(datas[this.curSubTabId] || []) :[];
+        this.setState({
+            datas
+        });
+        this.closeDetail();
+    }
 
-    let datas = mockData[this.curTabId];
-    datas = datas?(datas[this.curSubTabId] || []) :[];
-    this.setState({
-      datas
-    });
-    this.closeDetail();
-  }
+    // Brief: Function to handle user clicked on Menu Panel item
+    // Params:
+    // obj item，user selected data object of the menu panel item
+    // int index, index of user selected data object in data array
+    itemClicked(item,index){
+        this.selItem = {
+            tabId: this.curTabId,
+            subTabId: this.curSubTabId,
+            itemIndex: index,
+            itemData: item
+        };
 
-  itemClicked(item,index){
-    this.selItem = {
-        tabId: this.curTabId,
-        subTabId: this.curSubTabId,
-        itemId: index,
-        itemData: item
-    };
+        //call parent component's callback function to pass the user selected menu panel item to parent component
+        this.props.itemSel(this.selItem);
 
-    this.props.itemSel(this.selItem);
+        console.log(this.selItem);
 
-    console.log(this.selItem);
+        this.setState({
+            isShowDetail : true,
+            detailItem : item
+        });
+        this.forceUpdate();
+    }
 
-    this.setState({
-      isShowDetail : true,
-      detailItem : item
-    });
-    this.forceUpdate();
-  }
+    // Brief: Close Menu Item Detail Page and return to Menu Panel Item List
+    closeDetail(){
+        this.selItem = null;
+        this.props.itemSel(this.selItem);
 
-  closeDetail(){
-    this.selItem = null;
-    this.props.itemSel(this.selItem);
+        this.setState({
+            isShowDetail : false,
+            detailItem : {}
+        });
+        this.forceUpdate();
+    }
 
-    this.setState({
-      isShowDetail : false,
-      detailItem : {}
-    });
-    this.forceUpdate();
-  }
+    rawMarkup(content){
+        return { __html: content };
+    }
 
-  rawMarkup(content){
-      //var md = new Remarkable();
-      return { __html: content };
-  }
-
-  render() {
-    return (
-      <div >
-        <div className='content-items' style={{display: !this.state.isShowDetail?'block':'none'}}>
-          {
-            this.state.datas.map((item,i)=>{
-                return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item, i)}}/>
-            })
-          }
-        </div>
-        <div className='detail' style={{display: this.state.isShowDetail?'flex':'none'}}>
-          <div className='detail-image'>
-            <img src={this.state.detailItem?this.state.detailItem.img:''}/>
-            <div className='detail-price'>{this.state.detailItem.price}</div>
-          </div>
-          <div className='detail-msg'>
-            <section>
-              <h4>Product code</h4>
-              <span>{this.state.detailItem.code}</span>
-            </section>
-            <section>
-              <h4>Product Description</h4>
-              <div dangerouslySetInnerHTML={this.rawMarkup(this.state.detailItem.desc)} />
-            </section>
-            <section>
-              <h4>Care Instructions</h4>
-              <div>{this.state.detailItem.care}</div>
-            </section>
-            <div className='detail-msg-action'>
-                <button onClick={()=>{}}>购买</button>
-                <button onClick={()=>{this.closeDetail()}}>返回</button>
+    render() {
+        return (
+            <div >
+                <div className='content-items' style={{display: !this.state.isShowDetail?'block':'none'}}>
+                {
+                    this.state.datas.map((item,i)=>{
+                        return <img src={item.img} key={item.code} className='view-item' onClick={()=>{this.itemClicked(item, i)}}/>
+                    })
+                }
+                </div>
+                <div className='detail' style={{display: this.state.isShowDetail?'flex':'none'}}>
+                    <div className='detail-image'>
+                        <img src={this.state.detailItem?this.state.detailItem.img:''}/>
+                        <div className='detail-price'>{this.state.detailItem.price}</div>
+                    </div>
+                    <div className='detail-msg'>
+                        <section>
+                            <h4>Product code</h4>
+                            <span>{this.state.detailItem.code}</span>
+                        </section>
+                        <section>
+                            <h4>Product Description</h4>
+                            <div dangerouslySetInnerHTML={this.rawMarkup(this.state.detailItem.desc)} />
+                        </section>
+                        <section>
+                            <h4>Care Instructions</h4>
+                            <div>{this.state.detailItem.care}</div>
+                        </section>
+                        <div className='detail-msg-action'>
+                            <button onClick={()=>{}}>购买</button>
+                            <button onClick={()=>{this.closeDetail()}}>返回</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
+
 }
 
 

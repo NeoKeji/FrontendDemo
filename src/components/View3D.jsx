@@ -7,35 +7,35 @@ import '../assets/style/view3D.less';
 
 const VIEW_DEFAULT_PARAMS  = {
     ambientLight:{
-      color : 0xFFFFFF,
-      intensity: 0.5
+        color : 0xFFFFFF,
+        intensity: 0.5
     },
     directionalLight:{
-      color: 0xffffff,
-      intensity: 0.3
+        color: 0xffffff,
+        intensity: 0.3
     },
     pointLight:{
-      color: 0xFFF0DD,
-      intensity: 1.0
+        color: 0xFFF0DD,
+        intensity: 1.0
     },
     z:250,
     fileName:{
-    obj:'KBWithSubDiv.obj',
-    mtl:'KBWithSubDiv.mtl'
+        obj:'KBWithSubDiv.obj',
+        mtl:'KBWithSubDiv.mtl'
     },
     path:{
-    obj:'Resources/Models/Male/',
-    mtl:'Resources/Models/Male/'
+        obj:'Resources/Models/Male/',
+        mtl:'Resources/Models/Male/'
     },
     modelInitOffset:{
-    x:-50,
-    y:-95,
-    z:0
+        x:-50,
+        y:-95,
+        z:0
     },
     camera:{
-    fov:  45,
-    near: 0.1,
-    far:  1000
+        fov:  45,
+        near: 0.1,
+        far:  1000
     },
     clearColor: 0xF7F7F7,
     useWebglRender: true
@@ -99,7 +99,7 @@ class View3D extends React.Component {
         );
     }
 
-    // Brief: Handle user's click event from Menu Panel
+    // Brief: Callback function to handle user's click event from Menu Panel
     // Params:
     // boolean View3dShowImage true to display demo image otherwise render View3D
     // string View3dImageUrl point to the url of the demo image on server
@@ -141,7 +141,7 @@ class View3D extends React.Component {
         var model = new Model3D(this.scene, this.modelLoadDone);
 
         model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
-        //model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDivision.obj", "Resources/Models/Female/AngelababyWithSubDivision.mtl");
+        //model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
         //model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
         // model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
         //model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
