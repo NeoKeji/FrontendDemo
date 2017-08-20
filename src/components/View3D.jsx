@@ -67,6 +67,10 @@ class View3D extends React.Component {
         this.axes = null;
         this.viewSide = 1;
 
+        this.model = null;
+
+        this.effectControllerGUI = null;
+
         this.effectController = {
             showGround: true,
             showAxes:   false,
@@ -119,18 +123,23 @@ class View3D extends React.Component {
         this.display();
     }
 
+    // Brief: THings to do before View3D unmount 
+    componentWillUnmount(){
+        this.effectControllerGUI.destroy();
+    }
+
     // Brief: initialize View3D controls GUI
     // this control gui use dat.GUI library
     setupEffectController(){
-        var effectController = new dat.GUI({
+        this.effectControllerGUI = new dat.GUI({
             height:28*2 - 1
         });
 
-        effectController.domElement.id = 'effect-controller';
+        this.effectControllerGUI.domElement.id = 'effect-controller';
 
-        effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
-        effectController.add(this.effectController, 'showAxes').name("Show Axes");
-        effectController.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View side");
+        this.effectControllerGUI.add(this.effectController, 'showGround').name("Show Ground Plane");
+        this.effectControllerGUI.add(this.effectController, 'showAxes').name("Show Axes");
+        this.effectControllerGUI.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View side");
     }
 
     // Brief: initialize View3D
@@ -141,14 +150,14 @@ class View3D extends React.Component {
         this.addCamera();
         this.addLighting();
 
-        var model = new Model3D(this.scene, this.modelLoadDone);
+        this.model = new Model3D(this.scene, this.modelLoadDone);
 
-        model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
-        //model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
-        //model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
-        // model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
-        //model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
-        //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
+        this.model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
+        //this.model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
+        //this.model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
 
         if(this.effectController.showGround)
             this.drawPlane(1,12,12)

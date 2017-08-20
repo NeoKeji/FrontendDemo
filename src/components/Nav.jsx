@@ -15,7 +15,7 @@ class Nav extends React.Component {
           </div>
           <div className='nav-main-item-wrap'>
             <Link to='/face'>Register</Link>
-            <Link >Login</Link>
+            <Link to='/login'>Login</Link>
           </div>
         </nav>
       );
