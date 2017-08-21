@@ -392,18 +392,23 @@ class View3D extends React.Component {
       {
         case "1":
          this.camera.position.set(3, 10, 40);
+         this.controls.target.set(5,8,0);
          break;
         case "2":
          this.camera.position.set(3, 10, -40);
+         this.controls.target.set(-5,8,0);
          break;
         case "3":
          this.camera.position.set(40, 10, 0);
+         this.controls.target.set(0,8,-5);
          break;
         case "4":
          this.camera.position.set(-40, 10, 0);
+         this.controls.target.set(0,8,5);
          break;
         default:
          this.camera.position.set(3, 10, 40);
+         this.controls.target.set(5,8,0);
       }
     }
 
