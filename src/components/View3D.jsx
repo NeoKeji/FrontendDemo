@@ -66,11 +66,15 @@ class View3D extends React.Component {
         this.groundPlane = null;
         this.axes = null;
         this.viewSide = 1;
+        this.currentLightType = 1;
+        this.spotLightShadowMesh = null;
+        this.spotLightHelper = null;
 
         this.effectController = {
             showGround: true,
             showAxes:   false,
-            viewSide: 1
+            viewSide: 1,
+            lightType: 1
         };
 
         this.viewDOM = null;
@@ -130,7 +134,8 @@ class View3D extends React.Component {
 
         effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
         effectController.add(this.effectController, 'showAxes').name("Show Axes");
-        effectController.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View side");
+        effectController.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View Side");
+        effectController.add(this.effectController, 'lightType',{ default:1, spotlight:2}).name("Light Type");
     }
 
     // Brief: initialize View3D
@@ -208,7 +213,11 @@ class View3D extends React.Component {
             this.viewSide = this.effectController.viewSide;
         }
 
-        this.headLight.position.copy(this.camera.position);
+        if(this.lightType!=this.effectController.lightType){
+            this.setLightType(this.effectController.lightType);
+            this.lightType = this.effectController.lightType;
+        }
+           
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -268,9 +277,10 @@ class View3D extends React.Component {
         directionalLight.position.set( 0, 0, 1000 );
         this.scene.add( directionalLight );
 
-        this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
-        //light.position.set(-100,200,100); Fix headLight position to the camera
-        this.scene.add(this.headLight);
+        this.setDefaultLight();
+        // this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
+        // //light.position.set(-100,200,100); Fix headLight position to the camera
+        // this.scene.add(this.headLight);
     }
 
     // Brief: Function to add camera to the scene
@@ -410,6 +420,62 @@ class View3D extends React.Component {
          this.camera.position.set(3, 10, 40);
          this.controls.target.set(5,8,0);
       }
+    }
+
+    setLightType(lightType)
+    {
+        this.scene.remove(this.headLight);
+        switch(lightType)
+        {
+            case "1":
+                this.setDefaultLight();
+                break;
+            case "2":
+                this.setSpotLight();
+                break;
+            default:
+                this.setDefaultLight();
+
+        }
+    }
+
+    // Brief: set defualt light type
+    setDefaultLight()
+    {
+        //clear other lights settings
+        this.scene.remove(this.spotLightShadowMesh);
+        this.scene.remove(this.spotLightHelper);
+
+        this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
+        this.headLight.position.copy(this.camera.position);
+        this.scene.add(this.headLight);
+    }
+
+    // Brief: set spot light type
+    setSpotLight(){
+        this.headLight = new THREE.SpotLight(VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
+        this.headLight.position.set(-16,36,12 );
+        this.headLight.castShadow=true;
+        this.headLight.angle = Math.PI /6;
+        this.scene.add(this.headLight);
+        
+        if(this.spotLightHelper == null){
+            let lightHelper = new THREE.SpotLightHelper(  this.headLight );
+            this.spotLightHelper = lightHelper;
+        }
+        this.scene.add(this.spotLightHelper);
+
+        if(this.spotLightShadowMesh == null){
+            var material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
+            var geometry = new THREE.BoxGeometry( 2000, 1, 2000 );
+            var mesh = new THREE.Mesh( geometry, material );
+            mesh.position.set( 0, - 1, 0 );
+            mesh.receiveShadow = true;
+            this.spotLightShadowMesh=mesh;
+        }
+        
+        this.scene.add(this.spotLightShadowMesh);
+
     }
 
 }
