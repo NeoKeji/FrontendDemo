@@ -70,6 +70,10 @@ class View3D extends React.Component {
         this.spotLightShadowMesh = null;
         this.spotLightHelper = null;
 
+        this.model = null;
+
+        this.effectControllerGUI = null;
+
         this.effectController = {
             showGround: true,
             showAxes:   false,
@@ -123,19 +127,25 @@ class View3D extends React.Component {
         this.display();
     }
 
+    // Brief: THings to do before View3D unmount
+    componentWillUnmount(){
+        this.effectControllerGUI.destroy();
+    }
+
     // Brief: initialize View3D controls GUI
     // this control gui use dat.GUI library
     setupEffectController(){
-        var effectController = new dat.GUI({
+        this.effectControllerGUI = new dat.GUI({
             height:28*2 - 1
         });
 
-        effectController.domElement.id = 'effect-controller';
+        this.effectControllerGUI.domElement.id = 'effect-controller';
 
-        effectController.add(this.effectController, 'showGround').name("Show Ground Plane");
-        effectController.add(this.effectController, 'showAxes').name("Show Axes");
-        effectController.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View Side");
-        effectController.add(this.effectController, 'lightType',{ default:1, spotlight:2}).name("Light Type");
+        this.effectControllerGUI.add(this.effectController, 'showGround').name("Show Ground Plane");
+        this.effectControllerGUI.add(this.effectController, 'showAxes').name("Show Axes");
+        this.effectControllerGUI.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View Side");
+        this.effectControllerGUI.add(this.effectController, 'lightType',{ default:1, spotlight:2}).name("Light Type");
+
     }
 
     // Brief: initialize View3D
@@ -146,14 +156,18 @@ class View3D extends React.Component {
         this.addCamera();
         this.addLighting();
 
-        var model = new Model3D(this.scene, this.modelLoadDone);
+        this.model = new Model3D(this.scene, this.modelLoadDone);
 
-        model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
-        //model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
-        //model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
-        // model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
-        //model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
-        //model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
+        this.model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
+        //this.model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_long.obj", "Resources/Models/Accessories/hair/hair_long.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_short.obj", "Resources/Models/Accessories/hair/hair_short.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glasses_men.obj", "");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glass_women.obj", "");
+        //this.model.loadObjModelWithMtl("Resources/Models/Clothes/LakersJersey/LakerJersey.obj", "Resources/Models/Clothes/LakersJersey/LakerJersey.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Clothes/LakersShorts/LakerShorts.obj", "Resources/Models/Clothes/LakersShorts/LakerShorts.mtl");
 
         if(this.effectController.showGround)
             this.drawPlane(1,12,12)
@@ -217,7 +231,7 @@ class View3D extends React.Component {
             this.setLightType(this.effectController.lightType);
             this.lightType = this.effectController.lightType;
         }
-           
+
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -264,7 +278,7 @@ class View3D extends React.Component {
         this.renderer.setSize(width, height);
         this.renderer.setClearColor(VIEW_DEFAULT_PARAMS.clearColor);
         //document.body.appendChild(this.renderer.domElement);
-        this.viewDOM.getDOMNode().appendChild( this.renderer.domElement );
+        this.viewDOM.appendChild( this.renderer.domElement );
     }
 
     // Brief: Function to add light to the scene
@@ -458,7 +472,7 @@ class View3D extends React.Component {
         this.headLight.castShadow=true;
         this.headLight.angle = Math.PI /6;
         this.scene.add(this.headLight);
-        
+
         if(this.spotLightHelper == null){
             let lightHelper = new THREE.SpotLightHelper(  this.headLight );
             this.spotLightHelper = lightHelper;
@@ -473,7 +487,7 @@ class View3D extends React.Component {
             mesh.receiveShadow = true;
             this.spotLightShadowMesh=mesh;
         }
-        
+
         this.scene.add(this.spotLightShadowMesh);
 
     }
