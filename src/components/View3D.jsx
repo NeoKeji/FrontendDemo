@@ -78,6 +78,10 @@ class View3D extends React.Component {
 
         this.effectControllerGUI = null;
 
+        this.model = null;
+
+        this.effectControllerGUI = null;
+
         this.effectController = {
             showGround: true,
             showAxes:   false,
