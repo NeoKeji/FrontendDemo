@@ -1,0 +1,12 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl hairTexture
+Ns 30
+Kd 0.7 0.7 0.7
+Ks 0.03 0.03 0.03
+Ka 0 0 0
+Ni 1.000000
+d 1.000000
+illum 3
+map_Kd Resources\Models\Accessories\hair\short.png

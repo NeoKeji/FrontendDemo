@@ -69,7 +69,6 @@ class Tabs extends React.Component {
                 })
                 this.tabContent.tabChanged(item, index);
                 this.forceUpdate();
-
             }
         }
 
@@ -117,6 +116,12 @@ class Tabs extends React.Component {
 
         this.state.propOptions.tabItems.map((item,i)=>{
             delete item.active;
+            if(item.subTabs && (item.subTabs instanceof Array) && item.subTabs.length>0){
+                item.subTabs.map((subItem, i) => {
+                    delete subItem.active;
+                })
+            }
+
             if(i===this.state.propOptions.defaultActive){
                 this._tabFocus(item, i);
             }

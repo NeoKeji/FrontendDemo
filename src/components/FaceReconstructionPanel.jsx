@@ -53,22 +53,26 @@ class FaceReconstructionPanel extends React.Component  {
   onLoadImg(index){
     let file = this.refs[index];
     let src = this.getFileUrl(file);
+    if(!src){
+        return;
+    }
+
     let previewImages = this.state.previewImages;
     previewImages[index] = src;
     this.setState({
       previewImages
-    })
-    console.log('加载图片啦~');
+    });
+    console.log('Load image!');
   }
   resetImg(index){
     let previewImages = this.state.previewImages;
     previewImages[index] = '';
     this.setState({
       previewImages
-    })
+    });
   }
   finish(){
-    this.context.router.push('/body')
+    this.context.router.push('/body');
   }
 
   /**
@@ -76,6 +80,10 @@ class FaceReconstructionPanel extends React.Component  {
    */
   getFileUrl(source) {
     var url;
+
+    //if user cancel image selection
+    if(!source.value) return null;
+
     if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
       url = source.value;
     } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox

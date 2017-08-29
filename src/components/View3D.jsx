@@ -123,7 +123,7 @@ class View3D extends React.Component {
         this.display();
     }
 
-    // Brief: THings to do before View3D unmount 
+    // Brief: THings to do before View3D unmount
     componentWillUnmount(){
         this.effectControllerGUI.destroy();
     }
@@ -154,10 +154,14 @@ class View3D extends React.Component {
 
         this.model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
         //this.model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
-        //this.model.loadObjModelWithMtl("Resources/Models/Male/KbSimplified.obj", "Resources/Models/Male/KbSimplified.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_long.obj", "Resources/Models/Accessories/hair/hair_long.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_short.obj", "Resources/Models/Accessories/hair/hair_short.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
-        //this.model.loadJSONModel("../../Resources/Models/Male/KobeFused.json","../../Resources/Models/Male/KbSimplified.png");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glasses_men.obj", "");
+        //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glass_women.obj", "");
+        this.model.loadObjModelWithMtl("Resources/Models/Clothes/LakersJersey/LakerJersey.obj", "Resources/Models/Clothes/LakersJersey/LakerJersey.mtl");
+        this.model.loadObjModelWithMtl("Resources/Models/Clothes/LakersShorts/LakerShorts.obj", "Resources/Models/Clothes/LakersShorts/LakerShorts.mtl");
 
         if(this.effectController.showGround)
             this.drawPlane(1,12,12)
@@ -264,7 +268,7 @@ class View3D extends React.Component {
         this.renderer.setSize(width, height);
         this.renderer.setClearColor(VIEW_DEFAULT_PARAMS.clearColor);
         //document.body.appendChild(this.renderer.domElement);
-        this.viewDOM.getDOMNode().appendChild( this.renderer.domElement );
+        this.viewDOM.appendChild( this.renderer.domElement );
     }
 
     // Brief: Function to add light to the scene
