@@ -364,6 +364,36 @@ var mockData = {
                 viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
             },
     ],
+    Glasses : [{
+        code:'D613400',
+        desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
+        care: 'Twice clean per month',
+        img : '../src/assets/images/clothing/u501.png',
+        price: '$559',
+        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+    },{
+        code:'D613401',
+        desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
+        care: 'Twice clean per month',
+        img : '../src/assets/images/clothing/u502.png',
+        price: '$324',
+        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+    },],
+    Hats : [{
+        code:'D623400',
+        desc: 'Black baseball hat<br/>Baseball Cap<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+        care: 'Professional launder recommended',
+        img : '../src/assets/images/clothing/u601.png',
+        price: '$59',
+        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+    },{
+        code:'D623401',
+        desc: 'Elegent hat for women<br/>Hat<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+        care: 'Professional launder recommended',
+        img : '../src/assets/images/clothing/u602.png',
+        price: '$49',
+        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
+    },],
 
   },
 

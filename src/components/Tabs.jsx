@@ -185,6 +185,12 @@ Tabs.defaultProps  = {
         },{
             text: 'Shoes',
             id: 'Shoes',
+        },{
+            text: 'Glasses',
+            id: 'Glasses',
+        },{
+            text: 'Hats',
+            id: 'Hats',
         }]
     },{
         text: 'Hairstyles',
