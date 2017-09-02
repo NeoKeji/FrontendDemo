@@ -115,12 +115,48 @@ class View3D extends React.Component {
     // string View3dImageUrl image url point to the image to display
     // obj SelItem user selected object
     handlePanelItemSelection(View3dShowImage, View3dImageUrl, SelItem){
-        this.setState({
-            showImage: View3dShowImage,
-            imageUrl: View3dImageUrl
-        });
+        this.updateDress(SelItem);
+    }
 
-        console.log(SelItem);
+    //Brief: update dress
+    updateDress(SelItem){
+        if(SelItem == null){
+            return;
+        }
+        if(SelItem.tabId == "Clothes"){
+            if(SelItem.subTabId == "Tops"){
+                if(this.topDress != null){
+                    this.scene.remove(this.topDress.mesh);
+                    this.topDress = null;
+                }
+                else{
+                 switch (SelItem.itemIndex){
+                     case 0:
+                      this.topDress = new Model3D(this.scene);
+                      this.topDress.loadObjModelWithMtl("Resources/Models/Clothes/LakersJersey/LakerJersey.obj", "Resources/Models/Clothes/LakersJersey/LakerJersey.mtl");
+                      break;
+                     default:
+                      break;
+                 }
+                }
+            }
+            else if(SelItem.subTabId == "Pants"){
+                if(this.pantDress != null){
+                    this.scene.remove(this.pantDress.mesh);
+                    this.pantDress = null;
+                }
+                else{
+                 switch (SelItem.itemIndex){
+                     case 1:
+                      this.pantDress = new Model3D(this.scene);
+                      this.pantDress.loadObjModelWithMtl("Resources/Models/Clothes/LakersShorts/LakerShorts.obj", "Resources/Models/Clothes/LakersShorts/LakerShorts.mtl");
+                      break;
+                     default:
+                      break;
+                 }
+                }
+            }
+        }
     }
 
     // Brief: Called after render node is created
