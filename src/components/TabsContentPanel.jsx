@@ -79,8 +79,6 @@ class TabsContentPanel extends React.Component  {
         //call parent component's callback function to pass the user selected menu panel item to parent component
         this.props.itemSel(this.selItem);
 
-        console.log(this.selItem);
-
         this.setState({
             isShowDetail : true,
             detailItem : item

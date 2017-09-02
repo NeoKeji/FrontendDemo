@@ -120,12 +120,15 @@ class View3D extends React.Component {
     // Brief: Callback function to handle user's click event from Menu Panel
     // Params:
     // boolean View3dShowImage true to display demo image otherwise render View3D
-    // string View3dImageUrl point to the url of the demo image on server
-    handlePanelItemSelection(View3dShowImage, View3dImageUrl){
+    // string View3dImageUrl image url point to the image to display
+    // obj SelItem user selected object
+    handlePanelItemSelection(View3dShowImage, View3dImageUrl, SelItem){
         this.setState({
             showImage: View3dShowImage,
             imageUrl: View3dImageUrl
         });
+
+        console.log(SelItem);
     }
 
     // Brief: Called after render node is created

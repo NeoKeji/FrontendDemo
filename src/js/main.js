@@ -2,7 +2,6 @@ import React from 'react';
 import { Router, Route, hashHistory, IndexRoute} from 'react-router';
 import ReactDOM from 'react-dom';
 
-//import App from '../components/App.jsx';
 import App from '../pages/App.jsx';
 import Display from '../pages/Display.jsx';
 import FaceReconstruction from '../pages/FaceReconstruction.jsx';

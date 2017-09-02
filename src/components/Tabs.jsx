@@ -26,9 +26,9 @@ class Tabs extends React.Component {
     handleContentPanelSelection(selItem){
         if(this.props.view3dItemSelHandler){
             if(selItem != null){
-                this.props.view3dItemSelHandler(true, selItem.itemData.viewImage);
+                this.props.view3dItemSelHandler(true, selItem.itemData.viewImage, selItem);
             }else{
-                this.props.view3dItemSelHandler(false, '');
+                this.props.view3dItemSelHandler(false, '', selItem);
             }
         }
     }
@@ -76,9 +76,9 @@ class Tabs extends React.Component {
         //Call parent component's callback function to send user selected tab item information to the parent component
         if(this.props.view3dItemSelHandler){
             if(this.currentItem.tabImage){
-                this.props.view3dItemSelHandler(true, this.currentItem.tabImage);
+                this.props.view3dItemSelHandler(true, this.currentItem.tabImage, null);
             }else{
-                this.props.view3dItemSelHandler(false, '');
+                this.props.view3dItemSelHandler(false, '', null);
             }
         }
 
