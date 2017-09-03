@@ -228,7 +228,7 @@ class BodyGenerationPanel extends React.Component  {
       showMenOptions: false,
       displayIndex:0,
       previewImages:{
-        default:'../src/assets/images/mainpage/u168.PNG',
+        default:'src/assets/images/mainpage/u168.PNG',
         front:'',
         left:'',
         right:''

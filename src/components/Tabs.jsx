@@ -208,7 +208,7 @@ Tabs.defaultProps  = {
     },{
         text: 'Fit',
         id: 'Fit',
-        tabImage: '../src/assets/images/mainpage/neofit.png',
+        tabImage: 'src/assets/images/mainpage/neofit.png',
     },{
         text: 'Scenes',
         id: 'Scenes',
