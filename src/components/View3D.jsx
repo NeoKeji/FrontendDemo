@@ -85,7 +85,7 @@ class View3D extends React.Component {
 
         this.state = {
             showImage: false,
-            imageUrl: "../src/assets/images/bodygenerationpage/u649.png"
+            imageUrl: "src/assets/images/bodygenerationpage/u649.png"
         };
 
         this.resizeFunc = this.resizeFunc.bind(this);

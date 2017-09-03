@@ -9,7 +9,7 @@ class FaceReconstructionPanel extends React.Component  {
       content:'',
       displayIndex:0,
       previewImages:{
-        default:'../src/assets/images/mainpage/u168.PNG',
+        default:'src/assets/images/mainpage/u168.PNG',
         front:'',
         left:'',
         right:''
@@ -107,7 +107,7 @@ class FaceReconstructionPanel extends React.Component  {
               <input type='file' onChange={()=>{this.onLoadImg('front')}} ref='front' />
             </div>
             <div className='face-content-sample'>
-              <img src='../src/assets/images/mainpage/guideimage_u172.PNG'/>
+              <img src='src/assets/images/mainpage/guideimage_u172.PNG'/>
             </div>
           </div>
           <div className='face-content-button-group'>
@@ -124,7 +124,7 @@ class FaceReconstructionPanel extends React.Component  {
               <input type='file' onChange={()=>{this.onLoadImg('left')}} ref='left' />
             </div>
             <div className='face-content-sample'>
-              <img src='../src/assets/images/mainpage/guideimage_u187.PNG'/>
+              <img src='src/assets/images/mainpage/guideimage_u187.PNG'/>
             </div>
           </div>
           <div className='face-content-button-group'>
@@ -142,7 +142,7 @@ class FaceReconstructionPanel extends React.Component  {
 
             </div>
             <div className='face-content-sample'>
-              <img src='../src/assets/images/mainpage/guideimage_u202.PNG'/>
+              <img src='src/assets/images/mainpage/guideimage_u202.PNG'/>
             </div>
           </div>
           <div className='face-content-button-group'>

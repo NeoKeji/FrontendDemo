@@ -145,378 +145,463 @@ class TabsContentPanel extends React.Component  {
 
 //Mock Data
 var mockData = {
-  Clothes : {
-    Tops : [{
-      code:'D6298118',
-      desc: 'Kobe Lakers Home Jersey<br/>Sports Jersey<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u118.png',
-      price: '$99',
-      viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-    },{
-      code:'D6298497',
-      desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u97.png',
-      price: '$29',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping2.PNG'
-      },{
-        code:'D6298495',
-        desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u95.png',
-        price: '$39',
-        viewImage: '../src/assets/images/mainpage/VirtualShopping3.PNG'
-      }],
-    Jackets : [
-        {
-          code:'D6398301',
-          desc: 'Nike Kobe Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-          care: 'Professional launder recommended',
-          img : '../src/assets/images/clothing/u301.png',
-          price: '$159',
-          viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-          },{
-            code:'D6398302',
+    Clothes : {
+        Tops : [{
+            code:'I000000000',
+            desc: 'Kobe Lakers Home Jersey<br/>Sports Jersey<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000000000.png',
+            price: '$99',
+            viewImage: '',
+            modelUrl: 'Clothes/LakersJersey/LakerJersey.obj',
+            mtlUrl: 'Clothes/LakersJersey/LakerJersey.mtl'
+        },{
+            code:'I000000001',
+            desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000000001.png',
+            price: '$29',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping2.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000000002',
+            desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000000002.png',
+            price: '$39',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping3.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        }],
+        Jackets : [{
+            code:'I000010000',
+            desc: 'Nike Kobe Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000010000.png',
+            price: '$159',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000010001',
             desc: 'Blue and White Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u302.png',
+            img : 'src/assets/images/clothing/I000010001.png',
             price: '$109',
-            viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-          },{
-            code:'D6398303',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000010002',
             desc: 'Elegent Sports Coat<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u303.png',
+            img : 'src/assets/images/clothing/I000010002.png',
             price: '$439',
-            viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-          },{
-            code:'D6398304',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000010003',
             desc: 'Elegent Nylon Navy Blue Jacket<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
-            img : '../src/assets/images/clothing/u304.png',
+            img : 'src/assets/images/clothing/I000010003.png',
             price: '$199',
-            viewImage: '../src/assets/images/mainpage/VirtualShopping7.PNG'
-          }
+            viewImage: 'src/assets/images/mainpage/VirtualShopping7.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        }],
+        Dress : [{
+            code:'I000020000',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020000.png',
+            price: '$219',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020001',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020001.png',
+            price: '$568',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020002',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020002.png',
+            price: '$143',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020003',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020003.png',
+            price: '$257',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020004',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020004.png',
+            price: '$399',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020005',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020005.png',
+            price: '$125',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020006',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020006.png',
+            price: '$619',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG'
+        },{
+            code:'I000020007',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020007.png',
+            price: '$203',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000020008',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000020008.png',
+            price: '$315',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        }],
+        Pants : [{
+            code:'I000030000',
+            desc: 'Lakers Practice Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030000.png',
+            price: '$119',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030001',
+            desc: 'Lakers Home Shorts<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030001.png',
+            price: '$129',
+            viewImage: '',
+            modelUrl: 'Clothes/LakersShorts/LakerShorts.obj',
+            mtlUrl: 'Clothes/LakersShorts/LakerShorts.mtl'
+        },{
+            code:'I000030002',
+            desc: 'Blue Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030002.png',
+            price: '$129',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping4.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030003',
+            desc: 'Dark Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030003.png',
+            price: '$129',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030004',
+            desc: 'Fashionable Sports Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030004.png',
+            price: '$109',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping1.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030005',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030005.png',
+            price: '$219',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping4.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030006',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030006.png',
+            price: '$219',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000030007',
+            desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000030007.png',
+            price: '$219',
+            viewImage: 'src/assets/images/mainpage/VirtualShopping6.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        }],
+        Shoes : [{
+            code:'I000040000',
+            desc: 'Nike Kobe XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040000.png',
+            price: '$142',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000040001',
+            desc: 'Air Jordan XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040001.png',
+            price: '$168',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000040002',
+            desc: 'Dr Martens Boots Black<br/>Boots<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040002.png',
+            price: '$156',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000040003',
+            desc: 'Addidas Stan Smith White Sneakers<br/>Sneakers<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040003.png',
+            price: '$109',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000040004',
+            desc: 'Christian Louboutin High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040004.png',
+            price: '$859',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000040005',
+            desc: 'Valentino High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000040005.png',
+            price: '$726',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        }],
+        Glasses : [{
+            code:'I000050000',
+            desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
+            care: 'Twice clean per month',
+            img : 'src/assets/images/clothing/I000050000.png',
+            price: '$559',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000050001',
+            desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
+            care: 'Twice clean per month',
+            img : 'src/assets/images/clothing/I000050001.png',
+            price: '$324',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },],
+        Hats : [{
+            code:'I000060000',
+            desc: 'Black baseball hat<br/>Baseball Cap<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000060000.png',
+            price: '$59',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I000060001',
+            desc: 'Elegent hat for women<br/>Hat<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
+            care: 'Professional launder recommended',
+            img : 'src/assets/images/clothing/I000060001.png',
+            price: '$49',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },],
+    },
+
+    Hairstyles: {
+        Short: [{
+            code:'I010000000',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010000000.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010000001',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010000001.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010000002',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010000002.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010000003',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010000003.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010000004',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010000004.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },],
+        Mid: [{
+            code:'I010010000',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010010000.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010010001',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010010001.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010010002',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010010002.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010010003',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010010003.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010010004',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010010004.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },],
+        Long: [{
+            code:'I010020000',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010020000.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010020001',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010020001.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010020002',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010020002.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },{
+            code:'I010020003',
+            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
+            care: 'Wash at least once/day',
+            img : 'src/assets/images/hairstyles/I010020003.png',
+            price: '',
+            viewImage: 'src/assets/images/mainpage/3d_view_u47.PNG',
+            modelUrl: '',
+            mtlUrl: ''
+        },]
+    },
+
+    Fit: [
+
     ],
-    Dress : [{
-      code:'D609841',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u57.png',
-      price: '$219',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609842',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u59.png',
-      price: '$568',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609843',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u61.png',
-      price: '$143',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609844',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u63.png',
-      price: '$257',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609845',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u65.png',
-      price: '$399',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609846',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u67.png',
-      price: '$125',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609847',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u69.png',
-      price: '$619',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609848',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u73.png',
-      price: '$203',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    },{
-      code:'D609849',
-      desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u71.png',
-      price: '$315',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping5.PNG'
-    }],
-    Pants : [{
-      code:'D6298213',
-      desc: 'Lakers Practice Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u213.png',
-      price: '$119',
-      viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-    },{
-      code:'D6298214',
-      desc: 'Lakers Home Shorts<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u214.png',
-      price: '$129',
-      viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-    },{
-      code:'D6298215',
-      desc: 'Blue Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u215.png',
-      price: '$129',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping4.PNG'
-    },{
-      code:'D6298216',
-      desc: 'Dark Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u216.png',
-      price: '$129',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-    },{
-      code:'D6298217',
-      desc: 'Fashionable Sports Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-      care: 'Professional launder recommended',
-      img : '../src/assets/images/clothing/u217.png',
-      price: '$109',
-      viewImage: '../src/assets/images/mainpage/VirtualShopping1.PNG'
-    },{
-        code:'D6098471',
-        desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u76.png',
-        price: '$219',
-        viewImage: '../src/assets/images/mainpage/VirtualShopping4.PNG'
-      },{
-        code:'D6098482',
-        desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u78.png',
-        price: '$219',
-        viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-      },{
-        code:'D6098493',
-        desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u80.png',
-        price: '$219',
-        viewImage: '../src/assets/images/mainpage/VirtualShopping6.PNG'
-      }],
-    Shoes : [{
-              code:'D6498401',
-              desc: 'Nike Kobe XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-              care: 'Professional launder recommended',
-              img : '../src/assets/images/clothing/u401.png',
-              price: '$142',
-              viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },{
-                code:'D6498402',
-                desc: 'Air Jordan XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-                care: 'Professional launder recommended',
-                img : '../src/assets/images/clothing/u402.png',
-                price: '$168',
-                viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },{
-                code:'D6498403',
-                desc: 'Dr Martens Boots Black<br/>Boots<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-                care: 'Professional launder recommended',
-                img : '../src/assets/images/clothing/u403.png',
-                price: '$156',
-                viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },{
-                code:'D6498404',
-                desc: 'Addidas Stan Smith White Sneakers<br/>Sneakers<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-                care: 'Professional launder recommended',
-                img : '../src/assets/images/clothing/u404.png',
-                price: '$109',
-                viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },{
-                code:'D6498405',
-                desc: 'Christian Louboutin High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-                care: 'Professional launder recommended',
-                img : '../src/assets/images/clothing/u405.png',
-                price: '$859',
-                viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },{
-                code:'D6498406',
-                desc: 'Valentino High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-                care: 'Professional launder recommended',
-                img : '../src/assets/images/clothing/u406.png',
-                price: '$726',
-                viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-            },
+
+    Scenes: [
+
     ],
-    Glasses : [{
-        code:'D613400',
-        desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
-        care: 'Twice clean per month',
-        img : '../src/assets/images/clothing/u501.png',
-        price: '$559',
-        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-    },{
-        code:'D613401',
-        desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
-        care: 'Twice clean per month',
-        img : '../src/assets/images/clothing/u502.png',
-        price: '$324',
-        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-    },],
-    Hats : [{
-        code:'D623400',
-        desc: 'Black baseball hat<br/>Baseball Cap<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u601.png',
-        price: '$59',
-        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-    },{
-        code:'D623401',
-        desc: 'Elegent hat for women<br/>Hat<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
-        care: 'Professional launder recommended',
-        img : '../src/assets/images/clothing/u602.png',
-        price: '$49',
-        viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-    },],
 
-  },
+    Worlds: [
 
-  Hairstyles: {
-      Short: [{
-            code:'D501001',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1001.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },{
-            code:'D501002',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1002.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },{
-            code:'D501003',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1003.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501004',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1004.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501005',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1005.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },
-      ],
-      Mid: [{
-            code:'D501101',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1101.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },{
-            code:'D501102',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1102.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },{
-            code:'D501103',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1103.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },{
-            code:'D501104',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1104.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501105',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1105.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },
-
-      ],
-      Long: [{
-            code:'D501201',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1201.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501202',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1202.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501203',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1203.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u46.PNG'
-        },{
-            code:'D501204',
-            desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
-            care: 'Wash at least once/day',
-            img : '../src/assets/images/hairstyles/u1204.png',
-            price: '',
-            viewImage: '../src/assets/images/mainpage/3d_view_u47.PNG'
-        },
-
-      ]
-  },
-
-  Fit: [
-
-  ],
-
-  Scenes: [
-
-  ],
-
-  Worlds: [
-
-  ]
+    ]
 }
 
 
