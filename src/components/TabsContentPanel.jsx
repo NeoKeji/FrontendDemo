@@ -148,6 +148,7 @@ var mockData = {
     Clothes : {
         Tops : [{
             code:'I000000000',
+            category: 0,
             desc: 'Kobe Lakers Home Jersey<br/>Sports Jersey<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000000000.png',
@@ -157,6 +158,7 @@ var mockData = {
             mtlUrl: 'Clothes/LakersJersey/LakerJersey.mtl'
         },{
             code:'I000000001',
+            category: 0,
             desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000000001.png',
@@ -166,6 +168,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000000002',
+            category: 0,
             desc: 'Printed Women T-Shirt<br/>T-shirt<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000000002.png',
@@ -176,6 +179,7 @@ var mockData = {
         }],
         Jackets : [{
             code:'I000010000',
+            category: 0,
             desc: 'Nike Kobe Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000010000.png',
@@ -185,6 +189,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000010001',
+            category: 0,
             desc: 'Blue and White Sports Jacket<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000010001.png',
@@ -194,6 +199,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000010002',
+            category: 0,
             desc: 'Elegent Sports Coat<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000010002.png',
@@ -203,6 +209,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000010003',
+            category: 0,
             desc: 'Elegent Nylon Navy Blue Jacket<br/>Suit<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000010003.png',
@@ -213,6 +220,7 @@ var mockData = {
         }],
         Dress : [{
             code:'I000020000',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020000.png',
@@ -222,6 +230,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020001',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020001.png',
@@ -231,6 +240,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020002',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020002.png',
@@ -240,6 +250,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020003',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020003.png',
@@ -249,6 +260,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020004',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020004.png',
@@ -258,6 +270,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020005',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020005.png',
@@ -267,6 +280,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020006',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020006.png',
@@ -274,6 +288,7 @@ var mockData = {
             viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG'
         },{
             code:'I000020007',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020007.png',
@@ -283,6 +298,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000020008',
+            category: 2,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000020008.png',
@@ -293,6 +309,7 @@ var mockData = {
         }],
         Pants : [{
             code:'I000030000',
+            category: 1,
             desc: 'Lakers Practice Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030000.png',
@@ -302,6 +319,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030001',
+            category: 1,
             desc: 'Lakers Home Shorts<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030001.png',
@@ -311,6 +329,7 @@ var mockData = {
             mtlUrl: 'Clothes/LakersShorts/LakerShorts.mtl'
         },{
             code:'I000030002',
+            category: 1,
             desc: 'Blue Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030002.png',
@@ -320,6 +339,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030003',
+            category: 1,
             desc: 'Dark Jeans For Men<br/>Jeans<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030003.png',
@@ -329,6 +349,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030004',
+            category: 1,
             desc: 'Fashionable Sports Pants<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030004.png',
@@ -338,6 +359,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030005',
+            category: 1,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030005.png',
@@ -347,6 +369,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030006',
+            category: 1,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030006.png',
@@ -356,6 +379,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000030007',
+            category: 1,
             desc: 'Untold Broderie lace fit and flare dress<br/>Gowns<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000030007.png',
@@ -366,6 +390,7 @@ var mockData = {
         }],
         Shoes : [{
             code:'I000040000',
+            category: 6,
             desc: 'Nike Kobe XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040000.png',
@@ -375,6 +400,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000040001',
+            category: 6,
             desc: 'Air Jordan XI<br/>Sports Wear<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040001.png',
@@ -384,6 +410,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000040002',
+            category: 6,
             desc: 'Dr Martens Boots Black<br/>Boots<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040002.png',
@@ -393,6 +420,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000040003',
+            category: 6,
             desc: 'Addidas Stan Smith White Sneakers<br/>Sneakers<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040003.png',
@@ -402,6 +430,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000040004',
+            category: 6,
             desc: 'Christian Louboutin High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040004.png',
@@ -411,6 +440,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000040005',
+            category: 6,
             desc: 'Valentino High Heels<br/>High Heels<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000040005.png',
@@ -421,6 +451,7 @@ var mockData = {
         }],
         Glasses : [{
             code:'I000050000',
+            category: 4,
             desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
             care: 'Twice clean per month',
             img : 'src/assets/images/clothing/I000050000.png',
@@ -430,6 +461,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000050001',
+            category: 4,
             desc: 'Gucci Fashion Glasses<br/>Regular Glasses<br/>Gray<br/>Composite Plastic<br/>With Prescription',
             care: 'Twice clean per month',
             img : 'src/assets/images/clothing/I000050001.png',
@@ -440,6 +472,7 @@ var mockData = {
         },],
         Hats : [{
             code:'I000060000',
+            category: 5,
             desc: 'Black baseball hat<br/>Baseball Cap<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000060000.png',
@@ -449,6 +482,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I000060001',
+            category: 5,
             desc: 'Elegent hat for women<br/>Hat<br/>Crew Neck<br/>Shell/lining/net: 100% polyester<br/>Professional launder recommended',
             care: 'Professional launder recommended',
             img : 'src/assets/images/clothing/I000060001.png',
@@ -462,6 +496,7 @@ var mockData = {
     Hairstyles: {
         Short: [{
             code:'I010000000',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010000000.png',
@@ -471,6 +506,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010000001',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010000001.png',
@@ -480,6 +516,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010000002',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010000002.png',
@@ -489,6 +526,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010000003',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010000003.png',
@@ -498,6 +536,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010000004',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010000004.png',
@@ -508,6 +547,7 @@ var mockData = {
         },],
         Mid: [{
             code:'I010010000',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010010000.png',
@@ -517,6 +557,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010010001',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010010001.png',
@@ -526,6 +567,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010010002',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010010002.png',
@@ -535,6 +577,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010010003',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010010003.png',
@@ -544,6 +587,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010010004',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010010004.png',
@@ -554,6 +598,7 @@ var mockData = {
         },],
         Long: [{
             code:'I010020000',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010020000.png',
@@ -563,6 +608,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010020001',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010020001.png',
@@ -572,6 +618,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010020002',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010020002.png',
@@ -581,6 +628,7 @@ var mockData = {
             mtlUrl: ''
         },{
             code:'I010020003',
+            category: 3,
             desc: '(1)Side: Buzz 2cm<br/>(2)Top: 10cm, Messy texture, Gel applied<br/>(3)Back: Slide down<br/>(4)Time: 30min',
             care: 'Wash at least once/day',
             img : 'src/assets/images/hairstyles/I010020003.png',
