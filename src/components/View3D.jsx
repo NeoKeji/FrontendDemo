@@ -202,7 +202,7 @@ class View3D extends React.Component {
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_long.obj", "Resources/Models/Accessories/hair/hair_long.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_short.obj", "Resources/Models/Accessories/hair/hair_short.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/KobeFace/KobeFace.obj", "Resources/Models/KobeFace/KobeFace.mtl");
-        //this.model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelaBabyFace.obj", "Resources/Models/AngelaBaby/AngelaBabyFace.mtl");
+        //this.model.loadObjModelWithMtl("Resources/Models/AngelaBaby/AngelababyFace.obj", "Resources/Models/AngelaBaby/AngelababyFace.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glasses_men.obj", "");
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/glasses/glass_women.obj", "");
         //this.model.loadObjModelWithMtl("Resources/Models/Clothes/LakersJersey/LakerJersey.obj", "Resources/Models/Clothes/LakersJersey/LakerJersey.mtl");

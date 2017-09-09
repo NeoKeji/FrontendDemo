@@ -5,7 +5,7 @@ newmtl Texture0
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_HairMidlengthStraight.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_HairMidlengthStraight.bmp
 
 newmtl Texture1
     Ns 20
@@ -14,7 +14,7 @@ newmtl Texture1
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_eyeL_hi.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_eyeL_hi.bmp
 
 newmtl Texture2
     Ns 20
@@ -23,7 +23,7 @@ newmtl Texture2
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_eyeR_hi.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_eyeR_hi.bmp
 
 newmtl Texture3
     Ns 20
@@ -32,7 +32,7 @@ newmtl Texture3
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_skin_hi.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_skin_hi.bmp
 
 newmtl Texture4
     Ns 20
@@ -41,7 +41,7 @@ newmtl Texture4
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_sock.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_sock.bmp
 
 newmtl Texture5
     Ns 20
@@ -50,7 +50,7 @@ newmtl Texture5
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_teethLower.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_teethLower.bmp
 
 newmtl Texture6
     Ns 20
@@ -59,7 +59,7 @@ newmtl Texture6
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_teethUpper.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_teethUpper.bmp
 
 newmtl Texture7
     Ns 20
@@ -68,5 +68,5 @@ newmtl Texture7
     Kd 0.7 0.7 0.7
     Ks 0 0 0
     Ka 0 0 0
-    map_Kd AngelababyFace_tongue.bmp
+    map_Kd Resources/Models/AngelaBaby/AngelababyFace_tongue.bmp
 
