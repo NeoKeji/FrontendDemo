@@ -116,13 +116,21 @@ class View3D extends React.Component {
     // obj SelItem user selected object
     handlePanelItemSelection(View3dShowImage, View3dImageUrl, SelItem){
         this.updateDress(SelItem);
+        if(SelItem == null || SelItem.itemData.modelUrl == ""){ 
+            this.setState({
+            showImage: View3dShowImage,
+            imageUrl: View3dImageUrl
+            });
+        }
     }
 
     //Brief: update dress
     updateDress(SelItem){
-        if(SelItem == null){
+        if(SelItem == null || SelItem.itemData.modelUrl == ""){
             return;
         }
+        
+        var rootPath = "Resources/Models/";
         if(SelItem.tabId == "Clothes"){
             if(SelItem.subTabId == "Tops"){
                 if(this.topDress != null){
@@ -133,7 +141,7 @@ class View3D extends React.Component {
                  switch (SelItem.itemIndex){
                      case 0:
                       this.topDress = new Model3D(this.scene);
-                      this.topDress.loadObjModelWithMtl("Resources/Models/Clothes/LakersJersey/LakerJersey.obj", "Resources/Models/Clothes/LakersJersey/LakerJersey.mtl");
+                      this.topDress.loadObjModelWithMtl(rootPath + SelItem.itemData.modelUrl, rootPath + SelItem.itemData.mtlUrl);
                       break;
                      default:
                       break;
@@ -149,7 +157,7 @@ class View3D extends React.Component {
                  switch (SelItem.itemIndex){
                      case 1:
                       this.pantDress = new Model3D(this.scene);
-                      this.pantDress.loadObjModelWithMtl("Resources/Models/Clothes/LakersShorts/LakerShorts.obj", "Resources/Models/Clothes/LakersShorts/LakerShorts.mtl");
+                      this.pantDress.loadObjModelWithMtl(rootPath + SelItem.itemData.modelUrl,rootPath + SelItem.itemData.mtlUrl);
                       break;
                      default:
                       break;
@@ -270,7 +278,10 @@ class View3D extends React.Component {
             this.setLightType(this.effectController.lightType);
             this.lightType = this.effectController.lightType;
         }
-
+        
+        if(this.lightType == "1"){
+            this.headLight.position.copy(this.camera.position);
+        }
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -512,11 +523,11 @@ class View3D extends React.Component {
         this.headLight.angle = Math.PI /6;
         this.scene.add(this.headLight);
 
-        if(this.spotLightHelper == null){
-            let lightHelper = new THREE.SpotLightHelper(  this.headLight );
-            this.spotLightHelper = lightHelper;
-        }
-        this.scene.add(this.spotLightHelper);
+        // if(this.spotLightHelper == null){
+        //     let lightHelper = new THREE.SpotLightHelper(  this.headLight );
+        //     this.spotLightHelper = lightHelper;
+        // }
+        // this.scene.add(this.spotLightHelper);
 
         if(this.spotLightShadowMesh == null){
             var material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
