@@ -278,7 +278,10 @@ class View3D extends React.Component {
             this.setLightType(this.effectController.lightType);
             this.lightType = this.effectController.lightType;
         }
-
+        
+        if(this.lightType == "1"){
+            this.headLight.position.copy(this.camera.position);
+        }
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -520,11 +523,11 @@ class View3D extends React.Component {
         this.headLight.angle = Math.PI /6;
         this.scene.add(this.headLight);
 
-        if(this.spotLightHelper == null){
-            let lightHelper = new THREE.SpotLightHelper(  this.headLight );
-            this.spotLightHelper = lightHelper;
-        }
-        this.scene.add(this.spotLightHelper);
+        // if(this.spotLightHelper == null){
+        //     let lightHelper = new THREE.SpotLightHelper(  this.headLight );
+        //     this.spotLightHelper = lightHelper;
+        // }
+        // this.scene.add(this.spotLightHelper);
 
         if(this.spotLightShadowMesh == null){
             var material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
