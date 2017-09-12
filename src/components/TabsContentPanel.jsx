@@ -457,7 +457,7 @@ var mockData = {
             img : 'src/assets/images/clothing/I000050000.png',
             price: '$559',
             viewImage: 'src/assets/images/mainpage/3d_view_u46.PNG',
-            modelUrl: '',
+            modelUrl: 'Accessories/glasses/glasses_men.obj',
             mtlUrl: ''
         },{
             code:'I000050001',

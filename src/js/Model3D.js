@@ -3,6 +3,7 @@ class Model3D{
     constructor(scene, loadDone){
         this.scene = scene !== undefined ? scene : new THREE.Scene();
         this.modelLoadDone = loadDone !== undefined ? loadDone: (mesh) => {};
+        this.modelLoadDone = loadDone !== null ? loadDone: (mesh) => {};
         this.mesh = null;
     }
 

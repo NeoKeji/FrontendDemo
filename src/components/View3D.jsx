@@ -1,5 +1,6 @@
 import React from 'react';
 import Model3D from '../js/Model3d.js'
+import HumanModel3D from '../js/HumanModel3D.js'
 import Panel from './panel.jsx';
 import Tabs from './Tabs.jsx';
 import TabsContentPanel from './TabsContentPanel.jsx';
@@ -131,40 +132,9 @@ class View3D extends React.Component {
         }
         
         var rootPath = "Resources/Models/";
-        if(SelItem.tabId == "Clothes"){
-            if(SelItem.subTabId == "Tops"){
-                if(this.topDress != null){
-                    this.scene.remove(this.topDress.mesh);
-                    this.topDress = null;
-                }
-                else{
-                 switch (SelItem.itemIndex){
-                     case 0:
-                      this.topDress = new Model3D(this.scene);
-                      this.topDress.loadObjModelWithMtl(rootPath + SelItem.itemData.modelUrl, rootPath + SelItem.itemData.mtlUrl);
-                      break;
-                     default:
-                      break;
-                 }
-                }
-            }
-            else if(SelItem.subTabId == "Pants"){
-                if(this.pantDress != null){
-                    this.scene.remove(this.pantDress.mesh);
-                    this.pantDress = null;
-                }
-                else{
-                 switch (SelItem.itemIndex){
-                     case 1:
-                      this.pantDress = new Model3D(this.scene);
-                      this.pantDress.loadObjModelWithMtl(rootPath + SelItem.itemData.modelUrl,rootPath + SelItem.itemData.mtlUrl);
-                      break;
-                     default:
-                      break;
-                 }
-                }
-            }
-        }
+        var objPath = rootPath + SelItem.itemData.modelUrl;
+        var mtlPath = rootPath + SelItem.itemData.mtlUrl;
+        this.model.loadModelByCategory(objPath, mtlPath, null, SelItem.itemData.category);
     }
 
     // Brief: Called after render node is created
@@ -203,9 +173,15 @@ class View3D extends React.Component {
         this.addCamera();
         this.addLighting();
 
-        this.model = new Model3D(this.scene, this.modelLoadDone);
+        var objPath = VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj;
+        var mtlPath = VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl;
+        this.model = new HumanModel3D(this.scene);
+        this.model.loadBodyModel(objPath, mtlPath, this.modelLoadDone);
 
-        this.model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
+
+        //this.model = new Model3D(this.scene, this.modelLoadDone);
+
+        //this.model.loadObjModelWithMtl(VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj, VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl);
         //this.model.loadObjModelWithMtl("Resources/Models/Female/AngelababyWithSubDiv.obj", "Resources/Models/Female/AngelababyWithSubDiv.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_long.obj", "Resources/Models/Accessories/hair/hair_long.mtl");
         //this.model.loadObjModelWithMtl("Resources/Models/Accessories/hair/hair_short.obj", "Resources/Models/Accessories/hair/hair_short.mtl");
