@@ -70,6 +70,7 @@ class View3D extends React.Component {
         this.currentLightType = 1;
         this.spotLightShadowMesh = null;
         this.spotLightHelper = null;
+        this.sphLight = null;
 
         this.model = null;
 
@@ -161,8 +162,7 @@ class View3D extends React.Component {
         this.effectControllerGUI.add(this.effectController, 'showGround').name("Show Ground Plane");
         this.effectControllerGUI.add(this.effectController, 'showAxes').name("Show Axes");
         this.effectControllerGUI.add(this.effectController,'viewSide', { front:1, back: 2, left: 3,right:4 }).name("View Side");
-        this.effectControllerGUI.add(this.effectController, 'lightType',{ default:1, spotlight:2}).name("Light Type");
-
+        this.effectControllerGUI.add(this.effectController, 'lightType',{ default:1, spotlight:2, outdoorLight:3}).name("Light Type");
     }
 
     // Brief: initialize View3D
@@ -257,6 +257,9 @@ class View3D extends React.Component {
         
         if(this.lightType == "1"){
             this.headLight.position.copy(this.camera.position);
+        }
+        else if(this.lightType == "3"){
+            this.headLight.position.set(this.camera.position.x, this.camera.position.y, -1000 );
         }
 
         this.renderer.render(this.scene, this.camera);
@@ -465,6 +468,7 @@ class View3D extends React.Component {
     setLightType(lightType)
     {
         this.scene.remove(this.headLight);
+        this.scene.remove(this.sphLight);
         switch(lightType)
         {
             case "1":
@@ -472,6 +476,9 @@ class View3D extends React.Component {
                 break;
             case "2":
                 this.setSpotLight();
+                break;
+            case "3":
+                this.setOutDoorLight();
                 break;
             default:
                 this.setDefaultLight();
@@ -517,6 +524,20 @@ class View3D extends React.Component {
         this.scene.add(this.spotLightShadowMesh);
 
     }
+
+    setOutDoorLight(){
+        //clear other lights settings
+        this.scene.remove(this.spotLightShadowMesh);
+        this.scene.remove(this.spotLightHelper);
+        var sphLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+        //sphLight.color.setHSL( 0.6, 1, 0.6 );
+        //sphLight.groundColor.setHSL( 0.095, 1, 0.75 );
+        sphLight.position.set( 0,0, 500 );
+        this.scene.add(sphLight);
+        this.sphLight = sphLight;
+    }
+
+    
 
 }
 
