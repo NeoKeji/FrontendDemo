@@ -118,7 +118,7 @@ class View3D extends React.Component {
     // obj SelItem user selected object
     handlePanelItemSelection(View3dShowImage, View3dImageUrl, SelItem){
         this.updateDress(SelItem);
-        if(SelItem == null || SelItem.itemData.modelUrl == ""){ 
+        if(SelItem == null || SelItem.itemData.modelUrl == ""){
             this.setState({
             showImage: View3dShowImage,
             imageUrl: View3dImageUrl
@@ -131,7 +131,7 @@ class View3D extends React.Component {
         if(SelItem == null || SelItem.itemData.modelUrl == ""){
             return;
         }
-        
+
         var rootPath = "Resources/Models/";
         var objPath = rootPath + SelItem.itemData.modelUrl;
         var mtlPath = rootPath + SelItem.itemData.mtlUrl;
@@ -174,9 +174,10 @@ class View3D extends React.Component {
         this.addLighting();
 
         var objPath = VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj;
-        var mtlPath = VIEW_DEFAULT_PARAMS.path.mtl+VIEW_DEFAULT_PARAMS.fileName.mtl;
-        this.model = new HumanModel3D(this.scene);
-        this.model.loadBodyModel(objPath, mtlPath, this.modelLoadDone);
+        var mtlPath = VIEW_DEFAULT_PARAMS.path.mtl + VIEW_DEFAULT_PARAMS.fileName.mtl;
+        this.model = new HumanModel3D(this.scene, this.modelLoadDone);
+        //this.model.loadBodyModel(objPath, mtlPath, this.modelLoadDone);
+        this.model.loadBodyModel('KB_Model');
 
 
         //this.model = new Model3D(this.scene, this.modelLoadDone);
@@ -254,7 +255,7 @@ class View3D extends React.Component {
             this.setLightType(this.effectController.lightType);
             this.lightType = this.effectController.lightType;
         }
-        
+
         if(this.lightType == "1"){
             this.headLight.position.copy(this.camera.position);
         }
@@ -537,7 +538,7 @@ class View3D extends React.Component {
         this.sphLight = sphLight;
     }
 
-    
+
 
 }
 

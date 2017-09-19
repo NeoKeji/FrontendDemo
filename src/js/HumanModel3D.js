@@ -1,8 +1,32 @@
 import Model3D from '../js/Model3d.js'
 
+const BODY_MODEL_PARAMS = {
+    KB_Model: {
+        fileName:{
+            obj:'KBWithSubDiv.obj',
+            mtl:'KBWithSubDiv.mtl'
+        },
+        path:{
+            obj:'Resources/Models/Male/',
+            mtl:'Resources/Models/Male/'
+        }
+    },
+    AB_Model: {
+        fileName:{
+            obj:'AngelababyWithSubDiv.obj',
+            mtl:'AngelababyWithSubDiv.mtl'
+        },
+        path:{
+            obj:'Resources/Models/Female/',
+            mtl:'Resources/Models/Female/'
+        }
+    },
+}
+
 class HumanModel3D{
-    constructor(scene){
+    constructor(scene, modelLoadDoneFun){
         this.scene = scene !== undefined ? scene : new THREE.Scene();
+        this.curBodyModelName = '';
         this.bodyModel = null;
         this.dressTopHalfModel = null;
         this.dressBelowHalfModel = null;
@@ -12,13 +36,15 @@ class HumanModel3D{
         this.hatModel = null;
         this.shoeModel = null;
 
+        this.modelLoadDoneCallBack = modelLoadDoneFun;
+
         this.categories = {
             Tops:0,
             Pants:1,
             Dress:2,
             Hair:3,
             Glasses:4,
-            Hats:5,            
+            Hats:5,
             Shoes:6
         }
     }
@@ -26,6 +52,10 @@ class HumanModel3D{
     loadModelByCategory(objPath, mtlPath, callBackFunc, category){
         if(category == this.categories.Tops){
             if(this.dressTopHalfModel == null){
+                if(this.curBodyModelName != 'KB_Model') {
+                    this.loadBodyModel('KB_Model');
+                    console.log('load KB_Model');
+                }
                 this.loadDressTopHalfModel(objPath, mtlPath, callBackFunc);
             }
             else{
@@ -34,6 +64,10 @@ class HumanModel3D{
         }
         else if(category == this.categories.Pants){
             if(this.dressBelowHalfModel == null){
+                if(this.curBodyModelName != 'KB_Model') {
+                    this.loadBodyModel('KB_Model');
+                    console.log('load KB_Model');
+                }
                 this.loadDressBelowHalfModel(objPath, mtlPath, callBackFunc);
             }
             else{
@@ -42,6 +76,10 @@ class HumanModel3D{
         }
         else if(category == this.categories.Dress){
             if(this.dressEnsembleModel == null){
+                if(this.curBodyModelName != 'AB_Model') {
+                    this.loadBodyModel('AB_Model');
+                    console.log('load AB_Model');
+                }
                 this.loadDressEnsembleModel(objPath, mtlPath, callBackFunc);
             }
             else{
@@ -82,9 +120,16 @@ class HumanModel3D{
         }
     }
 
-    loadBodyModel(objPath, mtlPath, callBackFunc){
-        this.bodyModel = new Model3D(this.scene, callBackFunc);
+    loadBodyModel(modelName){
+        var objPath = BODY_MODEL_PARAMS[modelName].path.obj + BODY_MODEL_PARAMS[modelName].fileName.obj;
+        var mtlPath = BODY_MODEL_PARAMS[modelName].path.mtl + BODY_MODEL_PARAMS[modelName].fileName.mtl;
+        if(this.bodyModel != null) {
+            this.scene.remove(this.bodyModel.mesh);
+            this.bodyModel = null;
+        }
+        this.bodyModel = new Model3D(this.scene, this.modelLoadDoneCallBack);
         this.bodyModel.loadObjModelWithMtl(objPath, mtlPath);
+        this.curBodyModelName = modelName;
     }
 
     loadDressTopHalfModel(objPath, mtlPath, callBackFunc){

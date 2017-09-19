@@ -236,8 +236,8 @@ var mockData = {
             img : 'src/assets/images/clothing/I000020001.png',
             price: '$568',
             viewImage: 'src/assets/images/mainpage/VirtualShopping5.PNG',
-            modelUrl: '',
-            mtlUrl: ''
+            modelUrl: 'Clothes/Dress/RedDress/reddress.obj',
+            mtlUrl: 'Clothes/Dress/RedDress/reddress.mtl'
         },{
             code:'I000020002',
             category: 2,

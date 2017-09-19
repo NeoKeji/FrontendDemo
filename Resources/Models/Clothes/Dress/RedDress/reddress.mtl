@@ -1,0 +1,24 @@
+# Blender MTL File: 'None'
+# Material Count: 2
+
+newmtl UpperDressMaterial
+Ns 30
+Kd 0.6 0.6 0.6
+Ks 0.01 0.01 0.01
+Ka 0 0 0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Resources\Models\Clothes\Dress\RedDress\red_cloth_maroon.jpg
+map_Ka  Resources\Models\Clothes\Dress\RedDress\red_cloth_maroon.jpg
+
+newmtl LowerDressMaterial
+Ns 30
+Kd 0.6 0.6 0.6
+Ks 0.01 0.01 0.01
+Ka 0 0 0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Resources\Models\Clothes\Dress\RedDress\red_cloth_maroon.jpg
+map_Ka  Resources\Models\Clothes\Dress\RedDress\red_cloth_maroon.jpg
