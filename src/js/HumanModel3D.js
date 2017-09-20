@@ -35,6 +35,7 @@ class HumanModel3D{
         this.hairModel = null;
         this.hatModel = null;
         this.shoeModel = null;
+        this.currentObjPath = null;
 
         this.modelLoadDoneCallBack = modelLoadDoneFun;
 
@@ -56,10 +57,19 @@ class HumanModel3D{
                     this.loadBodyModel('KB_Model');
                     console.log('load KB_Model');
                 }
-                this.loadDressTopHalfModel(objPath, mtlPath, callBackFunc);
+                //this.loadDressTopHalfModel(objPath, mtlPath, callBackFunc);
             }
             else{
-                this.removeDressTopHalfModel();
+                //this.removeDressTopHalfModel();
+            }
+
+            this.removeDressTopHalfModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
+            }
+            else{
+                this.loadDressTopHalfModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
             }
         }
         else if(category == this.categories.Pants){
@@ -68,11 +78,22 @@ class HumanModel3D{
                     this.loadBodyModel('KB_Model');
                     console.log('load KB_Model');
                 }
-                this.loadDressBelowHalfModel(objPath, mtlPath, callBackFunc);
+                //this.loadDressBelowHalfModel(objPath, mtlPath, callBackFunc);
             }
             else{
-                this.removeDressBelowHalfModel();
+                //this.removeDressBelowHalfModel();
             }
+
+            this.removeDressBelowHalfModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
+            }
+            else{
+                this.loadDressBelowHalfModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
+            }
+
+
         }
         else if(category == this.categories.Dress){
             if(this.dressEnsembleModel == null){
@@ -80,42 +101,64 @@ class HumanModel3D{
                     this.loadBodyModel('AB_Model');
                     console.log('load AB_Model');
                 }
-                this.loadDressEnsembleModel(objPath, mtlPath, callBackFunc);
+                //this.loadDressEnsembleModel(objPath, mtlPath, callBackFunc);
             }
             else{
-                this.removeDressEnsembleModel();
+                //this.removeDressEnsembleModel();
             }
+
+            this.removeDressEnsembleModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
+            }
+            else{
+                this.loadDressEnsembleModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
+            }
+
         }
         else if(category == this.categories.Hair){
-            if(this.hairModel == null){
-                this.loadHairModel(objPath, mtlPath, callBackFunc);
+            this.removeHairModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
             }
             else{
-                this.removeHairModel();
+                this.loadHairModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
             }
         }
         else if(category == this.categories.Glasses){
-            if(this.glassModel == null){
-                this.loadGlassModel(objPath, mtlPath, callBackFunc);
+
+            this.removeGlassModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
             }
             else{
-                this.removeGlassModel();
+                this.loadGlassModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
             }
+
         }
         else if(category == this.categories.Hats){
-            if(this.hatModel == null){
-                this.loadHatModel(objPath, mtlPath, callBackFunc);
+
+            this.removeHatModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
             }
             else{
-                this.removeHatModel();
+                this.loadHatModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
             }
         }
         else if(category == this.categories.Shoes){
-            if(this.shoeModel == null){
-                this.loadShoeModel(objPath, mtlPath, callBackFunc);
+
+            this.removeShoeModel();
+            if(this.currentObjPath == objPath){
+                this.currentObjPath = null;
             }
             else{
-                this.removeShoeModel();
+                this.loadShoeModel(objPath, mtlPath, callBackFunc);
+                this.currentObjPath = objPath;
             }
         }
     }
