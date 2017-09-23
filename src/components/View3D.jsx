@@ -69,9 +69,6 @@ class View3D extends React.Component {
         this.axes = null;
         this.viewSide = 1;
         this.currentLightType = 1;
-        this.spotLightShadowMesh = null;
-        this.spotLightHelper = null;
-        this.sphLight = null;
         this.sceneLightModel = null;
         this.model = null;
 
@@ -255,20 +252,12 @@ class View3D extends React.Component {
         if(this.currentLightType!=Number(this.effectController.lightType)){
             var lightTypeNumber = Number(this.effectController.lightType);
             this.sceneLightModel.setSceneLight(lightTypeNumber);
-            // this.setLightType(this.effectController.lightType);
             this.currentLightType = this.effectController.lightType;
         }
         
         if(this.sceneLightModel != null){
             this.sceneLightModel.updateLightPosition(this.camera.position);
         }
-
-        // if(this.lightType == "1"){
-        //     this.headLight.position.copy(this.camera.position);
-        // }
-        // else if(this.lightType == "3"){
-        //     this.headLight.position.set(this.camera.position.x, this.camera.position.y, -1000 );
-        // }
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -322,18 +311,7 @@ class View3D extends React.Component {
     addLighting() {
 
         this.sceneLightModel = new SceneLightModel(this.scene,VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
-        this.sceneLightModel.setSceneLight(1);
-        // var ambientLight = new THREE.AmbientLight(VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
-        // this.scene.add( ambientLight );
-
-        // var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.directionalLight.intensity);
-        // directionalLight.position.set( 0, 0, 1000 );
-        // this.scene.add( directionalLight );
-
-        // this.setDefaultLight();
-        // this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
-        // //light.position.set(-100,200,100); Fix headLight position to the camera
-        // this.scene.add(this.headLight);
+        this.sceneLightModel.setSceneLight(1);  
     }
 
     // Brief: Function to add camera to the scene
@@ -474,80 +452,6 @@ class View3D extends React.Component {
          this.controls.target.set(5,8,0);
       }
     }
-
-    setLightType(lightType)
-    {
-        this.scene.remove(this.headLight);
-        this.scene.remove(this.sphLight);
-        switch(lightType)
-        {
-            case "1":
-                this.setDefaultLight();
-                break;
-            case "2":
-                this.setSpotLight();
-                break;
-            case "3":
-                this.setOutDoorLight();
-                break;
-            default:
-                this.setDefaultLight();
-
-        }
-    }
-
-    // Brief: set defualt light type
-    setDefaultLight()
-    {
-        //clear other lights settings
-        this.scene.remove(this.spotLightShadowMesh);
-        this.scene.remove(this.spotLightHelper);
-
-        this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
-        this.headLight.position.copy(this.camera.position);
-        this.scene.add(this.headLight);
-    }
-
-    // Brief: set spot light type
-    setSpotLight(){
-        this.headLight = new THREE.SpotLight(VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
-        this.headLight.position.set(-16,36,12 );
-        this.headLight.castShadow=true;
-        this.headLight.angle = Math.PI /6;
-        this.scene.add(this.headLight);
-
-        // if(this.spotLightHelper == null){
-        //     let lightHelper = new THREE.SpotLightHelper(  this.headLight );
-        //     this.spotLightHelper = lightHelper;
-        // }
-        // this.scene.add(this.spotLightHelper);
-
-        if(this.spotLightShadowMesh == null){
-            var material = new THREE.MeshPhongMaterial( { color: 0x808080, dithering: true } );
-            var geometry = new THREE.BoxGeometry( 2000, 1, 2000 );
-            var mesh = new THREE.Mesh( geometry, material );
-            mesh.position.set( 0, - 1, 0 );
-            mesh.receiveShadow = true;
-            this.spotLightShadowMesh=mesh;
-        }
-
-        this.scene.add(this.spotLightShadowMesh);
-
-    }
-
-    setOutDoorLight(){
-        //clear other lights settings
-        this.scene.remove(this.spotLightShadowMesh);
-        this.scene.remove(this.spotLightHelper);
-        var sphLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
-        //sphLight.color.setHSL( 0.6, 1, 0.6 );
-        //sphLight.groundColor.setHSL( 0.095, 1, 0.75 );
-        sphLight.position.set( 0,0, 500 );
-        this.scene.add(sphLight);
-        this.sphLight = sphLight;
-    }
-
-
 
 }
 
