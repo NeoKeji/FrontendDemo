@@ -1,6 +1,7 @@
 import React from 'react';
 import Model3D from '../js/Model3d.js'
 import HumanModel3D from '../js/HumanModel3D.js'
+import SceneLightModel from '../js/SceneLightModel.js'
 import Panel from './panel.jsx';
 import Tabs from './Tabs.jsx';
 import TabsContentPanel from './TabsContentPanel.jsx';
@@ -71,7 +72,7 @@ class View3D extends React.Component {
         this.spotLightShadowMesh = null;
         this.spotLightHelper = null;
         this.sphLight = null;
-
+        this.sceneLightModel = null;
         this.model = null;
 
         this.effectControllerGUI = null;
@@ -251,17 +252,23 @@ class View3D extends React.Component {
             this.viewSide = this.effectController.viewSide;
         }
 
-        if(this.lightType!=this.effectController.lightType){
-            this.setLightType(this.effectController.lightType);
-            this.lightType = this.effectController.lightType;
+        if(this.currentLightType!=Number(this.effectController.lightType)){
+            var lightTypeNumber = Number(this.effectController.lightType);
+            this.sceneLightModel.setSceneLight(lightTypeNumber);
+            // this.setLightType(this.effectController.lightType);
+            this.currentLightType = this.effectController.lightType;
+        }
+        
+        if(this.sceneLightModel != null){
+            this.sceneLightModel.updateLightPosition(this.camera.position);
         }
 
-        if(this.lightType == "1"){
-            this.headLight.position.copy(this.camera.position);
-        }
-        else if(this.lightType == "3"){
-            this.headLight.position.set(this.camera.position.x, this.camera.position.y, -1000 );
-        }
+        // if(this.lightType == "1"){
+        //     this.headLight.position.copy(this.camera.position);
+        // }
+        // else if(this.lightType == "3"){
+        //     this.headLight.position.set(this.camera.position.x, this.camera.position.y, -1000 );
+        // }
 
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
@@ -314,14 +321,16 @@ class View3D extends React.Component {
     // Brief: Function to add light to the scene
     addLighting() {
 
-        var ambientLight = new THREE.AmbientLight(VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
-        this.scene.add( ambientLight );
+        this.sceneLightModel = new SceneLightModel(this.scene,VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
+        this.sceneLightModel.setSceneLight(1);
+        // var ambientLight = new THREE.AmbientLight(VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
+        // this.scene.add( ambientLight );
 
-        var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.directionalLight.intensity);
-        directionalLight.position.set( 0, 0, 1000 );
-        this.scene.add( directionalLight );
+        // var directionalLight = new THREE.DirectionalLight( VIEW_DEFAULT_PARAMS.directionalLight.color, VIEW_DEFAULT_PARAMS.directionalLight.intensity);
+        // directionalLight.position.set( 0, 0, 1000 );
+        // this.scene.add( directionalLight );
 
-        this.setDefaultLight();
+        // this.setDefaultLight();
         // this.headLight = new THREE.PointLight(VIEW_DEFAULT_PARAMS.pointLight.color, VIEW_DEFAULT_PARAMS.pointLight.intensity);
         // //light.position.set(-100,200,100); Fix headLight position to the camera
         // this.scene.add(this.headLight);
