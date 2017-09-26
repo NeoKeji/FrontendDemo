@@ -21,7 +21,7 @@ const BODY_MODEL_PARAMS = {
             mtl:'Resources/Models/Female/'
         }
     },
-}
+};
 
 class HumanModel3D{
     constructor(scene, modelLoadDoneFun){
@@ -163,6 +163,9 @@ class HumanModel3D{
         }
     }
 
+    //Brief: Load Neo 3d avatar based on model's name
+    //Params:
+    //string modelName: key name corresponding to the model to load
     loadBodyModel(modelName){
         var objPath = BODY_MODEL_PARAMS[modelName].path.obj + BODY_MODEL_PARAMS[modelName].fileName.obj;
         var mtlPath = BODY_MODEL_PARAMS[modelName].path.mtl + BODY_MODEL_PARAMS[modelName].fileName.mtl;
@@ -173,6 +176,34 @@ class HumanModel3D{
         this.bodyModel = new Model3D(this.scene, this.modelLoadDoneCallBack);
         this.bodyModel.loadObjModelWithMtl(objPath, mtlPath);
         this.curBodyModelName = modelName;
+    }
+
+    //Brief: get an array of all avatar model names and then find current avatar model index.
+    //then load the next avatar model into the scene
+    loadNextBodyModel(){
+        var nextModelIndex = 0;
+        var allModelNames = Object.keys(BODY_MODEL_PARAMS);
+        var curModelIndex = allModelNames.findIndex( x => x == this.curBodyModelName );
+
+        if(curModelIndex != -1){
+            nextModelIndex = curModelIndex + 1;
+            if( nextModelIndex >= allModelNames.length ) nextModelIndex = 0;
+        }
+
+        this.removeAllClothes();
+        this.loadBodyModel(allModelNames[nextModelIndex]);
+        console.log("Load avatar " + this.curBodyModelName);
+    }
+
+    //Brief: remove all the clothes in the scene, keep only the avatar body model
+    removeAllClothes(){
+        this.removeDressTopHalfModel();
+        this.removeDressBelowHalfModel();
+        this.removeDressEnsembleModel();
+        this.removeHatModel();
+        this.removeGlassModel();
+        this.removeHairModel();
+        this.removeShoeModel();
     }
 
     loadDressTopHalfModel(objPath, mtlPath, callBackFunc){

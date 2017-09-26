@@ -650,7 +650,7 @@ var mockData = {
     Worlds: [
 
     ]
-}
+};
 
 
 export default TabsContentPanel;

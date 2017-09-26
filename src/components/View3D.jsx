@@ -46,7 +46,7 @@ const VIEW_DEFAULT_PARAMS  = {
 const objectNames = {
     groundPlane: 'ground-plane',
     coordAxes:  'coord-axes'
-}
+};
 
 //View3D component used to display 3d model
 class View3D extends React.Component {
@@ -89,6 +89,7 @@ class View3D extends React.Component {
         };
 
         this.resizeFunc = this.resizeFunc.bind(this);
+        this.onKeyDownFunc = this.onKeyDownFunc.bind(this);
         this.modelLoadDone = this.modelLoadDone.bind(this);
         this.handlePanelItemSelection = this.handlePanelItemSelection.bind(this);
     }
@@ -174,7 +175,6 @@ class View3D extends React.Component {
         var objPath = VIEW_DEFAULT_PARAMS.path.obj + VIEW_DEFAULT_PARAMS.fileName.obj;
         var mtlPath = VIEW_DEFAULT_PARAMS.path.mtl + VIEW_DEFAULT_PARAMS.fileName.mtl;
         this.model = new HumanModel3D(this.scene, this.modelLoadDone);
-        //this.model.loadBodyModel(objPath, mtlPath, this.modelLoadDone);
         this.model.loadBodyModel('KB_Model');
 
 
@@ -197,6 +197,7 @@ class View3D extends React.Component {
             this.drawAxes(15);
 
         window.addEventListener( 'resize', this.resizeFunc );
+        window.addEventListener( 'keydown', this.onKeyDownFunc, true );
 
     }
 
@@ -254,7 +255,7 @@ class View3D extends React.Component {
             this.sceneLightModel.setSceneLight(lightTypeNumber);
             this.currentLightType = this.effectController.lightType;
         }
-        
+
         if(this.sceneLightModel != null){
             this.sceneLightModel.updateLightPosition(this.camera.position);
         }
@@ -262,17 +263,6 @@ class View3D extends React.Component {
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
     }
-
-  /*_onWindowResize() {
-
-    let windowHalfX = window.innerWidth / 2;
-    let windowHalfY = window.innerHeight / 2;
-
-    this.state.renderer.setSize( window.innerWidth, window.innerHeight );
-    this.state.camera.aspect = window.innerWidth / window.innerHeight;
-    this.state.camera.updateProjectionMatrix();
-
-  }*/
 
     // Brief: Function called when the explorer window size changes
     resizeFunc(){
@@ -287,6 +277,18 @@ class View3D extends React.Component {
         this.camera.aspect = width/height;
         this.camera.updateProjectionMatrix();
 
+    }
+
+    // Brief: Functions to handle keydown event from user
+    onKeyDownFunc(event){
+        console.log("Key " + event.key + " is pressed");
+        switch( event.key ){
+            case 'c': // 'C'
+                if(event.ctrlKey){ //Press ctrl + c to change model
+                    this.model.loadNextBodyModel();
+                }
+            break;
+        }
     }
 
     // Brief: Initialize renderer
@@ -311,7 +313,7 @@ class View3D extends React.Component {
     addLighting() {
 
         this.sceneLightModel = new SceneLightModel(this.scene,VIEW_DEFAULT_PARAMS.ambientLight.color, VIEW_DEFAULT_PARAMS.ambientLight.intensity);
-        this.sceneLightModel.setSceneLight(1);  
+        this.sceneLightModel.setSceneLight(1);
     }
 
     // Brief: Function to add camera to the scene
