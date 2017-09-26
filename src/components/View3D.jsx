@@ -89,7 +89,7 @@ class View3D extends React.Component {
         };
 
         this.resizeFunc = this.resizeFunc.bind(this);
-        this.onKeyDownFunc = this.onKeyDownFunc.bind(this);
+        this.onKeyUpFunc = this.onKeyUpFunc.bind(this);
         this.modelLoadDone = this.modelLoadDone.bind(this);
         this.handlePanelItemSelection = this.handlePanelItemSelection.bind(this);
     }
@@ -197,7 +197,7 @@ class View3D extends React.Component {
             this.drawAxes(15);
 
         window.addEventListener( 'resize', this.resizeFunc );
-        window.addEventListener( 'keydown', this.onKeyDownFunc, true );
+        window.addEventListener( 'keyup', this.onKeyUpFunc, true );
 
     }
 
@@ -279,9 +279,9 @@ class View3D extends React.Component {
 
     }
 
-    // Brief: Functions to handle keydown event from user
-    onKeyDownFunc(event){
-        console.log("Key " + event.key + " is pressed");
+    // Brief: Functions to handle keyup event from user
+    onKeyUpFunc(event){
+        console.log("Key " + event.key + " is pressed")
         switch( event.key ){
             case 'c': // 'C'
                 if(event.ctrlKey){ //Press ctrl + c to change model
