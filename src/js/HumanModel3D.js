@@ -21,6 +21,26 @@ const BODY_MODEL_PARAMS = {
             mtl:'Resources/Models/Female/'
         }
     },
+    KB_Face: {
+        fileName:{
+            obj:'KobeFace.obj',
+            mtl:'KobeFace.mtl'
+        },
+        path:{
+            obj:'Resources/Models/KobeFace/',
+            mtl:'Resources/Models/KobeFace/'
+        }
+    },
+    AB_Face: {
+        fileName:{
+            obj:'AngelababyFace.obj',
+            mtl:'AngelababyFace.mtl'
+        },
+        path:{
+            obj:'Resources/Models/AngelaBaby/',
+            mtl:'Resources/Models/AngelaBaby/'
+        }
+    },
 };
 
 class HumanModel3D{
